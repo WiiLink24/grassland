@@ -29,7 +29,6 @@
             addlicense
             just
             alejandra
-            nodejs_23
             pnpm
           ];
         };
