@@ -1,3 +1,6 @@
 {
-  "name": "grassland"
+  "name": "grassland",
+  "devDependencies": {
+    "syncpack": "^13.0.0"
+  }
 }
