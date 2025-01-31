@@ -1,0 +1,21 @@
+set unstable
+set script-interpreter := ["nu"]
+
+# Default recipe of the justfile
+default: help
+
+# Show this info message
+help:
+  just --list
+
+# Setup the environment of the project
+[script]
+setup:
+    # Do nothing, only here to report to the main monorepo justfile
+    # that there is no setup in this project
+
+# Check, lint and format all files
+[script]
+check:
+    # Do nothing, only here to report to the main monorepo justfile
+    # that there is no checks in this project
