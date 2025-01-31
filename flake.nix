@@ -30,9 +30,7 @@
           just
           pnpm
           nodejs_18
-          shfmt
-          shellcheck
-          bash
+          nushell
         ];
       };
     });
