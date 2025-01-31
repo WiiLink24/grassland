@@ -1,3 +1,6 @@
+import "justfiles/web.justfile"
+import "justfiles/nix.justfile"
+
 # Default recipe of the justfile
 default: help
 
@@ -7,69 +10,57 @@ help:
 
     just --list
 
-nix_config_dir_path := env("HOME") + "/.config/nix"
-nix_config_file_path := nix_config_dir_path + "/nix.conf"
-
-# Remove your Nix CLI configuration and set one that will only enable Nix Flakes experiment
-enable-nix-flakes:
+# Check if it's installed all the commands and tools needed for everything in the monorepo
+ensure-tools:
     #!/usr/bin/env bash
+    
+    commands=("pnpm" "npm" "addlicense" "just" "shfmt" "shellcheck" "jq")
 
-    rm -f {{nix_config_file_path}}
-    mkdir -p {{nix_config_dir_path}}
-    touch {{nix_config_file_path}}
-    echo "experimental-features = nix-command flakes" > {{nix_config_file_path}}
+    for commandName in "${commands[@]}"; do
+        echo "Info: Checking '${commandName}'"
 
-# Open the development environment with a Bash shell
-bash:
-    #!/usr/bin/env bash
-    nix develop
+        if ! command -v "${commandName}" >/dev/null 2>&1; then
+            echo "Error: The command ${commandName} is not available!"
+            exit 1
+        fi
+    done
 
-# Open the development environment with a Fish shell
-fish:
-    #!/usr/bin/env bash
-    nix develop --command fish
+    echo "Info: Every tool is available!"
 
 # Setup the environment of the monorepo
-setup:
+setup: setup-web
+
+# Check, lint and format everything
+check: check-meta check-projects
+
+# Check, lint and format projects independent files
+check-meta: check-web
     #!/usr/bin/env bash
 
-    just check-tools
-    pnpm i
+    # Check if the Nix CLI is avaiable, if it is then lint and format all Nix files
+    if command -v nix >/dev/null 2>&1; then
+        just check-nix
+    else
+        echo "Warning: Nix CLI is not installed, ignoring its linting"
+    fi
 
-# Check if it's installed all the commands and tools needed for all projects in the monorepo
-check-tools:
-    #!/usr/bin/env bash
-    ./scripts/check-tools.bash
-
-# Lint and format all files
-check:
-    #!/usr/bin/env bash
-
-    just check-meta
-    just check-projects
-
-# Lint and format all files in the meta directories
-check-meta:
-    #!/usr/bin/env bash
-
-    # Check if the Nix CLI is avaiable, if it's then lint and format all Nix files
-    if command -v nix >/dev/null 2>&1 ; then just check-nix; else echo "Nix is not installed, ignoring its linting"; fi
-
-    # Check Bash scripting stuff
-    chmod u+x ./scripts/*
-    shellcheck scripts/*
-    shfmt --indent 2 --language-dialect bash --write --simplify scripts/
-
-    # Check JS/TS/Node.js/pnpm/ stuff
-    pnpm exec syncpack -- fix-mismatches
-    pnpm exec syncpack -- format
-
-# Lint and format all files in all the projects
+# Run check, linting and formating recipes in all projects
 check-projects:
     #!/usr/bin/env bash
-    just -f ./sprout/justfile check
 
-# Lint and format all Nix files
-check-nix:
-    #!/usr/bin/env bash
-    nix fmt **/.nix
+    for project in ./projects/*/; do
+        project_justfile_json=$(just --dump-format json --dump -f projects/sprout/justfile)
+
+        recipes=("setup" "check")
+
+        for recipe in "${recipes[@]}"; do
+            if [[ $(echo "${project_justfile_json}" | jq ".recipes.${recipe}") != "null" ]]; then
+                continue
+            fi
+
+            echo "Error: The project '${project}' is missing in its justfile a '${recipe}' recipe"
+            exit 1
+        done
+
+        just -f "$project/justfile" check
+    done

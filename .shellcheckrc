@@ -8,3 +8,6 @@ enable=quote-safe-variables
 
 # Require [[ and warn about [ in Bash/Ksh
 enable=require-double-brackets
+
+# Suggest putting braces around all variable references
+enable=require-variable-braces
