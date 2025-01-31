@@ -1,5 +1,6 @@
 import "justfiles/web.justfile"
 import "justfiles/nix.justfile"
+import "justfiles/gitignore.justfile"
 
 set unstable
 set script-interpreter := ["nu"]
@@ -15,7 +16,8 @@ help:
 # Check if it's installed all the commands and tools needed for everything in the monorepo
 [script]
 ensure-tools:
-    ["pnpm" "npm" "addlicense" "just" "shfmt" "shellcheck" "jq"] | each {|command|
+    # `just` and `nu` can be omited because without them this recipe could not run
+    ["pnpm" "npm" "addlicense" "jq"] | each {|command|
         print $"Info: Checking '($command)'"
 
         if (which $command | length) < 1 {
@@ -23,6 +25,17 @@ ensure-tools:
             exit 1
         }
     }
+
+    # Here comes Python installation hell (https://xkcd.com/1987/)
+
+    mut python_executable = "python3"
+
+    if ((sys host).name | str contains --ignore-case windows) {
+        $python_executable = "py -3"
+    }
+
+    let python_version = ^$"($python_executable)" --version | parse "{name} {mayor}.{minor}.{patch}"
+    print $python_version
 
     print "Info: Every tool is available!"
 
@@ -76,18 +89,7 @@ check-projects:
         just check-project $project.name
     }
 
-# Take all the gitignore files in the ./gitignores/ directory and merge them
+# Create a new templated project
 [script]
-build-gitignore:
-    const mainGitignoreFilePath = "./.gitignore"
-
-    rm -f $mainGitignoreFilePath
-    "#### WARNING: MACHINE GENERATED FILE, DO NOT EDIT!!!\n" | save --append $mainGitignoreFilePath
-    "#### To generate this file run `just build-gitignore` at the root of the monorepo\n" | save --append $mainGitignoreFilePath
-
-    ls ...(glob ./gitignores/**/*.gitignore) | each { |gitignoreFragmentPath|
-        let header = $"\n### ($gitignoreFragmentPath.name | path basename)\n"
-
-        $header | save --append $mainGitignoreFilePath
-        open $gitignoreFragmentPath.name | save --append $mainGitignoreFilePath
-    }
+new-project project_name:
+    cp -r ./templates/project projects/{{project_name}}
