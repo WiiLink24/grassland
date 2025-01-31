@@ -1,31 +1,30 @@
 import "justfiles/web.justfile"
 import "justfiles/nix.justfile"
 
+set unstable
+set script-interpreter := ["nu"]
+
 # Default recipe of the justfile
 default: help
 
 # Show this info message
+[script]
 help:
-    #!/usr/bin/env bash
-
     just --list
 
 # Check if it's installed all the commands and tools needed for everything in the monorepo
+[script]
 ensure-tools:
-    #!/usr/bin/env bash
-    
-    commands=("pnpm" "npm" "addlicense" "just" "shfmt" "shellcheck" "jq")
+    ["pnpm" "npm" "addlicense" "just" "shfmt" "shellcheck" "jq"] | each {|command|
+        print $"Info: Checking '($command)'"
 
-    for commandName in "${commands[@]}"; do
-        echo "Info: Checking '${commandName}'"
-
-        if ! command -v "${commandName}" >/dev/null 2>&1; then
-            echo "Error: The command ${commandName} is not available!"
+        if (which $command | length) < 1 {
+            print "Error: The command ${commandName} is not available!"
             exit 1
-        fi
-    done
+        }
+    }
 
-    echo "Info: Every tool is available!"
+    print "Info: Every tool is available!"
 
 # Setup the environment of the monorepo
 setup: setup-web
@@ -34,33 +33,30 @@ setup: setup-web
 check: check-meta check-projects
 
 # Check, lint and format projects independent files
+[script]
 check-meta: check-web
-    #!/usr/bin/env bash
-
-    # Check if the Nix CLI is avaiable, if it is then lint and format all Nix files
-    if command -v nix >/dev/null 2>&1; then
+    # Check if the Nix CLI is available, if it is then lint and format all Nix files
+    if (which nix | length) >= 1 {
         just check-nix
-    else
-        echo "Warning: Nix CLI is not installed, ignoring its linting"
-    fi
+    } else {
+        print "Warning: Nix CLI is not installed, ignoring its linting"
+    }
 
 # Run check, linting and formating recipes in all projects
+[script]
 check-projects:
-    #!/usr/bin/env bash
+    ls ./projects/ | where type == dir | each { |project|
+        let justfile_path = $"($project.name)/justfile"
+        let project_justfile_json = just --dump-format json --dump -f $justfile_path | from json
 
-    for project in ./projects/*/; do
-        project_justfile_json=$(just --dump-format json --dump -f projects/sprout/justfile)
+        ["setup", "check"] | each { |recipe|
+            if ($project_justfile_json.recipes | get $recipe) != "null" {
+                return
+            }
 
-        recipes=("setup" "check")
-
-        for recipe in "${recipes[@]}"; do
-            if [[ $(echo "${project_justfile_json}" | jq ".recipes.${recipe}") != "null" ]]; then
-                continue
-            fi
-
-            echo "Error: The project '${project}' is missing in its justfile a '${recipe}' recipe"
+            print "Error: The project '$project' is missing in its justfile a '$recipe' recipe"
             exit 1
-        done
+        }
 
-        just -f "$project/justfile" check
-    done
+        just -f $justfile_path check
+    }
