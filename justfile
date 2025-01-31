@@ -19,7 +19,7 @@ ensure-tools:
         print $"Info: Checking '($command)'"
 
         if (which $command | length) < 1 {
-            print "Error: The command ${commandName} is not available!"
+            print $"Error: The command '($command)' is not available!"
             exit 1
         }
     }
@@ -46,6 +46,13 @@ check-meta: check-web
 [script]
 check-projects:
     ls ./projects/ | where type == dir | each { |project|
+        let project_stylized_name = $project.name | path basename
+
+        if not ($"($project.name)/README.md" | path exists) {
+            print $"Error: The project '($project_stylized_name)' is missing a README.md file"
+            exit 1
+        }
+    
         let justfile_path = $"($project.name)/justfile"
         let project_justfile_json = just --dump-format json --dump -f $justfile_path | from json
 
@@ -54,9 +61,25 @@ check-projects:
                 return
             }
 
-            print "Error: The project '$project' is missing in its justfile a '$recipe' recipe"
+            print $"Error: The project '($project_stylized_name)' is missing in its justfile a '$recipe' recipe"
             exit 1
         }
 
         just -f $justfile_path check
+    }
+
+# Take all the gitignore files in the ./gitignores/ directory and merge them
+[script]
+build-gitignore:
+    const mainGitignoreFilePath = "./.gitignore"
+
+    rm -f $mainGitignoreFilePath
+    "#### WARNING: MACHINE GENERATED FILE, DO NOT EDIT!!!\n" | save --append $mainGitignoreFilePath
+    "#### To generate this file run `just build-gitignore` at the root of the monorepo\n" | save --append $mainGitignoreFilePath
+
+    ls ...(glob ./gitignores/**/*.gitignore) | each { |gitignoreFragmentPath|
+        let header = $"\n### ($gitignoreFragmentPath.name | path basename)\n"
+
+        $header | save --append $mainGitignoreFilePath
+        open $gitignoreFragmentPath.name | save --append $mainGitignoreFilePath
     }
