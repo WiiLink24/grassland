@@ -17,12 +17,5 @@ setup:
 # Check, lint and format all files
 [script]
 check:
-    pnpm run check
-
-# Run the testing website
-web:
-    pnpm run check
-
-# Run the Storybook
-storybook:
-    pnpm run storybook
+    # Do nothing, only here to report to the main monorepo justfile
+    # that there is no checks in this project

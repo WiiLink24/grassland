@@ -30,7 +30,9 @@ ensure-tools:
 setup: setup-web
 
 # Check, lint and format everything
+[script]
 check: check-meta check-projects
+    print "Info: Everything is ok!"
 
 # Check, lint and format projects independent files
 [script]
@@ -42,30 +44,36 @@ check-meta: check-web
         print "Warning: Nix CLI is not installed, ignoring its linting"
     }
 
+# Run check, linting and formating recipes in a project
+[script]
+check-project project_path:
+    let project_stylized_name = "{{project_path}}" | path basename
+
+    if not ("{{project_path}}/README.md" | path exists) {
+        print $"Error: The project '($project_stylized_name)' is missing a README.md file"
+        exit 1
+    }
+    
+    let justfile_path = $"{{project_path}}/justfile"
+
+    let project_justfile_json = just --dump-format json --dump -f $justfile_path | from json
+
+    ["setup", "check"] | each { |recipe|
+        if "script" in ($project_justfile_json.recipes | get $recipe | get attributes | columns) {
+            return
+        }
+
+        print $"Error: The project '($project_stylized_name)' is missing in its justfile a '($recipe)' recipe"
+        exit 1
+    }
+
+    just -f $justfile_path check
+
 # Run check, linting and formating recipes in all projects
 [script]
 check-projects:
     ls ./projects/ | where type == dir | each { |project|
-        let project_stylized_name = $project.name | path basename
-
-        if not ($"($project.name)/README.md" | path exists) {
-            print $"Error: The project '($project_stylized_name)' is missing a README.md file"
-            exit 1
-        }
-    
-        let justfile_path = $"($project.name)/justfile"
-        let project_justfile_json = just --dump-format json --dump -f $justfile_path | from json
-
-        ["setup", "check"] | each { |recipe|
-            if ($project_justfile_json.recipes | get $recipe) != "null" {
-                return
-            }
-
-            print $"Error: The project '($project_stylized_name)' is missing in its justfile a '$recipe' recipe"
-            exit 1
-        }
-
-        just -f $justfile_path check
+        just check-project $project.name
     }
 
 # Take all the gitignore files in the ./gitignores/ directory and merge them
