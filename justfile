@@ -106,13 +106,13 @@ new-project project_name:
 # Build the Docker image of a project given a git tag. Mostly used in the CI/CD
 [script]
 build-docker-image tag:
-    let tag = ({{tag}} | parse "{project}/{version}").0
+    let tag = ("{{tag}}" | parse "{project}/{version}").0
 
     just -f $"./projects/($tag.project)/justfile" build-docker-image $tag.version
 
 # Publish to ghcr.io the Docker image of a project given a git tag. Mostly used in the CI/CD
 [script]
 publish-docker-image tag:
-    let tag = ({{tag}} | parse "{project}/{version}").0
+    let tag = ("{{tag}}" | parse "{project}/{version}").0
 
     docker push $"ghcr.io/kutu-dev/($tag.project):($tag.version)"
