@@ -12,7 +12,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - uses: ./.github/actions/setup-nix
-      with : ${{ secrets.GITHUB_TOKEN }}
+      with : "${{ secrets.GITHUB_TOKEN }}"
 
     - run: just setup
     - run: just check
