@@ -1,0 +1,71 @@
+# WARNING!: Please check ./projects/documentation/README.md before editing this file
+
+site_name: WiiLink Docs
+site_url: https://docs.wiilink.ca
+
+# TODO: Change this to the WiiLink org
+repo_name: WiiLink Grassland
+repo_url: https://github.com/kutu-dev/grassland
+
+nav:
+  - WiiLink: 'index.md'
+  - Sprout: '!include ./projects/sprout/mkdocs.yml'
+  - Documentation: '!include ./projects/documentation/mkdocs.yml'
+
+plugins:
+  - monorepo
+
+markdown_extensions:
+  - pymdownx.arithmatex
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_generator: !!python/name:pymdownx.emoji.to_svg
+  - pymdownx.inlinehilite
+  - pymdownx.magiclink
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+  - pymdownx.snippets
+
+theme:
+  name: material
+
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.instant
+    - navigation.instant.prefetch
+
+  palette:
+    # Palette toggle for automatic mode
+    - media: "(prefers-color-scheme)"
+      primary: &theme_color deep purple
+      accent: *theme_color
+      toggle:
+        icon: material/brightness-auto
+        name: Switch to light mode
+
+    # Palette toggle for light mode
+    - media: "(prefers-color-scheme: light)"
+      primary: *theme_color
+      accent: *theme_color
+      scheme: default 
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      primary: *theme_color
+      accent: *theme_color
+      scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to system preference

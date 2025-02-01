@@ -28,14 +28,23 @@ ensure-tools:
 
     # Here comes Python installation hell (https://xkcd.com/1987/)
 
-    mut python_executable = "python3"
+    print $"Info: Checking Python installation"
+    let python_version = (python3 --version | parse "{name} {mayor}.{minor}.{patch}").0 | reject name 
 
-    if ((sys host).name | str contains --ignore-case windows) {
-        $python_executable = "py -3"
+    if ($python_version.mayor | into int) != 3 {
+        print "Error: Somehow you have at the 'python3' command a version of Python different than 3.X.Y"
+        exit 1
     }
 
-    let python_version = ^$"($python_executable)" --version | parse "{name} {mayor}.{minor}.{patch}"
-    print $python_version
+    if ($python_version.minor | into int) < 13 {
+        print "Error: Your Python3 installation is below 3.13.Y, please update Python"
+        exit 1
+    }
+
+    if ($python_version.patch | into int) < 1 {
+        print "Error: Your Python3 installation is below 3.13.1, please update Python"
+        exit 1
+    }
 
     print "Info: Every tool is available!"
 

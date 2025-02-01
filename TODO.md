@@ -1,2 +1,8 @@
 # TODO
-- Make global docs in all projects, ensure README.md?. Make things easy to use.
+- Add protected main branch.
+    - Declarative branch protection?
+- Add CI/CD.
+- Documents things a little bit:
+    - Explain python hell.
+    - How to setup everything.
+    - And other.

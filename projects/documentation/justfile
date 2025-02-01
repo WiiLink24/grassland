@@ -21,7 +21,29 @@ check:
     # Do nothing, only here to report to the main monorepo justfile
     # that there is no checks in this project
 
+# Generate the index file from the README in the given path
+[script]
+generate-index path:
+    const docs_index_path = "{{path}}/docs/index.md"
+
+    rm -f $docs_index_path
+    touch $docs_index_path
+
+    "<!-- WARNING: MACHINE GENERATED FILE, DO NOT EDIT!!! -->\n" | save --append $docs_index_path
+    "<!-- To generate this file run `just generate-indices` at `/projects/documentation/` in the monorepo -->\n\n" | save --append $docs_index_path
+
+    open $"{{path}}/README.md" | save --append $docs_index_path
+
+# Generate the index files for all documentation directories
+[script]
+generate-indices:
+    just generate-index ../..
+
+    ls .. | where type == dir | each { |project|
+        just generate-index $project.name
+    }
+
 # Run the monorepo documentation
 [script]
-run:
+serve: generate-indices
     .venv/bin/mkdocs serve -f ../../mkdocs.yml

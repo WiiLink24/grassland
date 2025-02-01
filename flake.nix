@@ -31,6 +31,7 @@
           pnpm
           nodejs_18
           nushell
+          python313
         ];
       };
     });
