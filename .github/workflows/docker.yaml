@@ -36,4 +36,4 @@ jobs:
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
 
-    - run: docker push ${{ env.REGISTRY }}/wiilink/documentation
+    - run: docker push ${{ env.REGISTRY }}/kutu-dev/documentation
