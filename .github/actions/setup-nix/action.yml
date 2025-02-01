@@ -11,7 +11,7 @@ runs:
   steps:
     - uses: cachix/install-nix-action@v27
       with:
-        github_access_token: ${{ inputs.github_access_token }}
+        github_access_token: "${{ inputs.github_access_token }}"
 
     - uses: DeterminateSystems/magic-nix-cache-action@main
 
