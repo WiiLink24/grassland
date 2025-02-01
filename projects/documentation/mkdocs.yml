@@ -1,6 +1,6 @@
 # WARNING!: Please check ./projects/documentation/README.md before editing this file
 
-site_name: Documentation
+site_name: documentation
 
 nav:
   - Intro: 'index.md'

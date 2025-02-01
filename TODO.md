@@ -5,4 +5,5 @@
 - Documents things a little bit:
     - Explain python hell.
     - How to setup everything.
+    - The stack.
     - And other.
