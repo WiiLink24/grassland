@@ -13,4 +13,4 @@ runs:
       with:
         registry: ghcr.io
         username: kutu-dev
-        password: ${{ inputs.GITHUB_TOKEN }}
+        password: ${{ inputs.github_access_token }}
