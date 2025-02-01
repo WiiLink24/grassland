@@ -11,3 +11,4 @@ jobs:
     - uses: cachix/install-nix-action@v27
     - uses: nicknovitski/nix-develop@v1
     - run: just setup
+    - run: just check
