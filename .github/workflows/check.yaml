@@ -1,5 +1,9 @@
 name: "Check"
 
+concurrency:
+  group: ${{ github.workflow }} 
+  cancel-in-progress: true
+
 on:
   workflow_dispatch:
   push:
@@ -17,3 +21,28 @@ jobs:
 
     - run: just setup
     - run: just check
+
+  build-and-publish-docker-images-versionless-projects:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        project: [documentation]
+
+    needs:
+    - check
+
+    steps:
+    - uses: actions/checkout@v4
+    - uses: ./.github/actions/setup-nix
+      with:
+        github_access_token: "${{ secrets.GITHUB_TOKEN }}"
+
+    - name: Log in to the Container registry
+      uses: docker/login-action@v3
+      with:
+        registry: ghcr.io
+        username: kutu-dev
+        password: ${{ secrets.GITHUB_TOKEN }}
+
+    - run: just build-docker-image "${{ matrix.project }}/versionless"
+    - run: just publish-docker-image "${{ matrix.project }}/versionless"
