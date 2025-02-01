@@ -2,6 +2,9 @@ name: "Check"
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - main
 
 jobs:
   check:
