@@ -24,6 +24,13 @@ jobs:
 
   build-and-publish-docker-images-versionless-projects:
     runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      packages: write
+      attestations: write
+      id-token: write
+
     strategy:
       matrix:
         project: [documentation]
