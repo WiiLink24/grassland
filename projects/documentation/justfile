@@ -6,16 +6,22 @@ default: help
 
 # Show this info message
 help:
-  just --list
+    just --list
 
 # Setup the environment of the project
 [script]
 setup:
-    # Do nothing, only here to report to the main monorepo justfile
-    # that there is no setup in this project
+    rm -rf .venv
+    python3 -m venv .venv
+    .venv/bin/pip3 install -r requirements.txt
 
 # Check, lint and format all files
 [script]
 check:
     # Do nothing, only here to report to the main monorepo justfile
     # that there is no checks in this project
+
+# Run the monorepo documentation
+[script]
+run:
+    .venv/bin/mkdocs serve -f ../../mkdocs.yml
