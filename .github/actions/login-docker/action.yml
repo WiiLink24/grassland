@@ -1,0 +1,16 @@
+name: "Login in Docker CLI"
+description: "Login to the Docker CLI with a predefined configuration"
+
+inputs:
+   github_access_token:
+     required: true
+     description: "The GitHub token to use in the action"
+
+runs:
+  using: "composite"
+  steps:
+    - uses: docker/login-action@v3
+      with:
+        registry: ghcr.io
+        username: kutu-dev
+        password: ${{ inputs.GITHUB_TOKEN }}
