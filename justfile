@@ -102,3 +102,10 @@ check-projects:
 [script]
 new-project project_name:
     cp -r ./templates/project projects/{{project_name}}
+
+# Build the Docker image of a project given a git tag. Mostly used in the CI/CD
+[script]
+build-docker-image tag:
+    let project = ("documentation/0.0.1" | parse "{project}/{version}" | reject version).0.project
+
+    just -f $"./projects/($project)/justfile" build-docker-image

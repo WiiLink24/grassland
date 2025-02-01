@@ -46,4 +46,12 @@ generate-indices:
 # Run the monorepo documentation
 [script]
 serve: generate-indices
+    # Serve the root MkDocs file of the repo
     .venv/bin/mkdocs serve -f ../../mkdocs.yml
+
+# Build the Docker image of the documentation. Mostly used in the CI/CD
+[script]
+build-docker-image:
+    cd ../..
+
+    docker build -t wiilink/documentation -f projects/documentation/Dockerfile .
