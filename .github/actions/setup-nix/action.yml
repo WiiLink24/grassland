@@ -13,6 +13,6 @@ runs:
       with:
         github_access_token: "${{ inputs.github_access_token }}"
 
-    - uses: DeterminateSystems/magic-nix-cache-action@main
+    - uses: DeterminateSystems/magic-nix-cache-action@v9
 
     - uses: nicknovitski/nix-develop@v1

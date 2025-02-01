@@ -115,4 +115,4 @@ build-docker-image tag:
 publish-docker-image tag:
     let tag = ("{{tag}}" | parse "{project}/{version}").0
 
-    docker push $"ghcr.io/kutu-dev/grassland/($tag.project):($tag.version)"
+    docker push $"ghcr.io/kutu-dev/($tag.project):($tag.version)"

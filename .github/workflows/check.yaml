@@ -12,7 +12,8 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - uses: ./.github/actions/setup-nix
-      with : "${{ secrets.GITHUB_TOKEN }}"
+      with:
+        github_access_token: "${{ secrets.GITHUB_TOKEN }}"
 
     - run: just setup
     - run: just check
