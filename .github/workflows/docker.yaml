@@ -10,7 +10,7 @@ on:
       - "*/v*.*.*"
 
 jobs:
-  check:
+  publish:
     runs-on: ubuntu-latest
 
     permissions:

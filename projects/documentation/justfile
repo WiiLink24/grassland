@@ -54,4 +54,4 @@ serve: generate-indices
 build-docker-image:
     cd ../..
 
-    docker build -t wiilink/documentation -f projects/documentation/Dockerfile .
+    docker build -t ghcr.io/wiilink/documentation -f projects/documentation/Dockerfile .
