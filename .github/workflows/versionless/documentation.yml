@@ -9,6 +9,7 @@ on:
   push:
     paths:
       - "**/docs/**/*"
+      - "docs/**/*"
 
 jobs:
   build-and-publish-docker-image-versionless-documentation:
