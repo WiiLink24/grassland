@@ -2,13 +2,10 @@ name: "Publish to the GitHub Container registry"
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.repository }}
 
 on:
   workflow_dispatch:
   push:
-    branches:
-      - main
     tags:
       - "*/v*.*.*"
 
@@ -39,4 +36,4 @@ jobs:
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
 
-    - run: docker push wiilink/documentation
+    - run: docker push ${{ env.REGISTRY }}/wiilink/documentation
