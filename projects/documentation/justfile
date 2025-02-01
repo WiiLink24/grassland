@@ -51,7 +51,7 @@ serve: generate-indices
 
 # Build the Docker image of the documentation. Mostly used in the CI/CD
 [script]
-build-docker-image:
+build-docker-image tag:
     cd ../..
 
-    docker build -t ghcr.io/kutu-dev/documentation -f projects/documentation/Dockerfile .
+    docker build -t ghcr.io/kutu-dev/documentation:{{tag}} -f projects/documentation/Dockerfile .
