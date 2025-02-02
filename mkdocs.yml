@@ -12,6 +12,7 @@ nav:
     - Getting started: index.md
     - Monorepo: monorepo.md
     - The CI/CD pipeline: ci-cd-pipeline.md
+    - The modular Gitignore system: gitignore.md
   - Sprout: '!include ./projects/sprout/mkdocs.yml'
   - Documentation: '!include ./projects/documentation/mkdocs.yml'
 

@@ -1,10 +1,6 @@
 #### WARNING: MACHINE GENERATED FILE, DO NOT EDIT!!!
 #### To generate this file run `just generate-gitignore` at the root of the monorepo
 
-### storybook.gitignore
-storybook-static/
-*storybook.log
-
 ### python.gitignore
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -259,9 +255,6 @@ fabric.properties
 # Android studio 3.1+ serialized cache file
 .idea/caches/build_file_checksums.ser
 
-### vite.gitignore
-vite.config.js.timestamp-*
-vite.config.ts.timestamp-*
 ### windows.gitignore
 # Windows thumbnail cache files
 Thumbs.db
@@ -339,13 +332,16 @@ result-*
 # Ignore automatically generated direnv output
 .direnv
 
+### storybook.gitignore
+storybook-static/
+*storybook.log
+
+### vite.gitignore
+vite.config.js.timestamp-*
+vite.config.ts.timestamp-*
 ### svelte.gitignore
 .svelte-kit/
 package
-### env.gitignore
-.env
-.env.*
-!.env.example
 ### node.gitignore
 # Logs
 logs
@@ -483,3 +479,8 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+### env.gitignore
+.env
+.env.*
+!.env.example

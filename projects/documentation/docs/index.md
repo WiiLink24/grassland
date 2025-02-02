@@ -2,7 +2,13 @@
 <!-- To generate this file run `just generate-indices` at `/projects/documentation/` in the monorepo -->
 
 # Documentation
-> Centralized documentation system
+
+![Image title](./assets/logo-light.svg){ width="300" }
+/// caption
+Image caption
+///
+
+The centralized documentation system for [WiiLink](https://wiilink.ca).
 
 ## How this works
 We are using the [Backstage Monorepo plugin](https://github.com/backstage/mkdocs-monorepo-plugin) to handle the centralization of the documentation, the issue it that it needs the main `mkdocs.yml` file and `docs/` directory to be at the root of the project file hierchary. To work around this, and not lose the advantages of the integration with the `justfile`s of the monorepo, the documentation is split in two parts:

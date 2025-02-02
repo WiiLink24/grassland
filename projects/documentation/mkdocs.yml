@@ -3,4 +3,4 @@
 site_name: documentation
 
 nav:
-  - Intro: 'index.md'
+  - About: 'index.md'

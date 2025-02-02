@@ -1,4 +1,4 @@
 site_name: sprout
 
 nav:
-  - Intro: 'index.md'
+  - About: 'index.md'
