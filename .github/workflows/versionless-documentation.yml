@@ -31,5 +31,5 @@ jobs:
       with:
         github_access_token: "${{ secrets.GITHUB_TOKEN }}"
 
-    - run: just build-docker-image documentation/versionless
-    - run: just publish-docker-image documentation/versionless
+    - run: just build-docker-image docker/documentation/versionless
+    - run: just publish-docker-image docker/documentation/versionless
