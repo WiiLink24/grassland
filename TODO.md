@@ -5,3 +5,4 @@
     - Optional recipes (build-docker-image)
     - The stack.
     - And other.
+- Optimize size of build phase of docs
