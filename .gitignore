@@ -332,6 +332,10 @@ result-*
 # Ignore automatically generated direnv output
 .direnv
 
+### env.gitignore
+.env
+.env.*
+!.env.example
 ### storybook.gitignore
 storybook-static/
 *storybook.log
@@ -479,8 +483,3 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
-
-### env.gitignore
-.env
-.env.*
-!.env.example
