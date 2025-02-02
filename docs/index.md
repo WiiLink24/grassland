@@ -13,6 +13,8 @@ Maybe you are interested in [checking why a monorepo is used](monorepo.md).
 !!! note
     There is available a Nix Flake with a `devShell` tailored for the repository, if you know how [Nix](https://nixos.org/) works feel free to use it and ski this section.
 
+>>>>>>TODO<<<<<<<
+
 ### Ensure that everything is working
 To check that every tool is set up correctly just run:
 ```shell
