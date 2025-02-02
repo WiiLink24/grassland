@@ -52,6 +52,20 @@ serve: generate-indices
 # Build the Docker image of the documentation. Mostly used in the CI/CD
 [script]
 build-docker-image tag:
+    # To avoid polluting the root of the project with unnecessary files
+    # we tell Docker to use the Dockerfile located at this project but trick it
+    # by setting the CWD to the root of the repo so we can copy any file
+
+    # Unfortunately an equivalent option for the `.dockerignore` file is not available
+    # so we can only make a temporal copy of it and then remove it
+
+    # Without this trick building the image can take multiple seconds
+    # and any edit (even internally by Git as the `.git` directory is al tracked)
+    # will invalidate the cache of the layer
+
+    cp .dockerignore ../..
     cd ../..
 
     docker build -t ghcr.io/kutu-dev/documentation:{{tag}} -f projects/documentation/Dockerfile .
+
+    rm .dockerignore

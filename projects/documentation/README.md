@@ -1,10 +1,5 @@
 # Documentation
 
-![Image title](./assets/logo-light.svg){ width="300" }
-/// caption
-Image caption
-///
-
 The centralized documentation system for [WiiLink](https://wiilink.ca).
 
 ## How this works

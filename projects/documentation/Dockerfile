@@ -14,5 +14,6 @@ RUN python3 -m mkdocs build --site-dir /site
 FROM nginx:latest
 
 WORKDIR /usr/share/nginx/html
+COPY --from=build /app /app
 COPY --from=build /site /usr/share/nginx/html
 EXPOSE 80
