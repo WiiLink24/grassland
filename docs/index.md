@@ -5,20 +5,37 @@
 
 The main [WiiLink](https://wiilink.ca) monorepo. Holds from custom libraries and websites up to CLI tools and backend server code.
 
+Maybe you are interested in [checking why a monorepo is used](monorepo.md).
+
 ## Getting started
-_TODO_
+### Setting up the environment
 
-## Why a monorepo?
-Development in a big project with the traditional microrepo aproach can become really hard to manage in the long term.
+!!! note
+    There is available a Nix Flake with a `devShell` tailored for the repository, if you know how [Nix](https://nixos.org/) works feel free to use it and ski this section.
 
-Orchestraing breaking changes with multiple repositories is usually prone to errors and have risk to leave for some time the `main` branch completly broken and in the worst cases make some downtime. By having everything in one file hierchary even the most complex refactorizations are just one temporal branch away.
+### Ensure that everything is working
+To check that every tool is set up correctly just run:
+```shell
+just ensure-tools
+```
 
-To sum things up, the advantages that monorepos give are:
+### Scaffold the repository
+To install all dependencies in all projects (_recommended_) run:
+```shell
+just setup
+```
 
-- Using custom libraries without having to relay on [SemVer](https://semver.org/) or the platform package registry, just change your code and the dependant projects in one commit.
-- Be able to share the CI/CD code and configurations without Git submodules or complex code deduplication systems. See more at [the CI/CD pipeline explanation](ci-cd-pipeline.md).
+### Check the integrity of the code
+To check that the last commit that was pushed to `main` was in good share and that you are working on the safe side of things run:
+```shell
+just check
+```
 
+### And start coding!
+Check the `README.md` stored inside each project at `./projects/` to learn more about them. Remember each one has its one `justfile` so you can run `just` to check the available recipes.
 
-If you are interested in learning more about this aproach to software architecture, the [Monorepo Tools webite](https://monorepo.tools) is a really intereting resource to take a look.
-
-### Why not
+!!! note
+    If you want to create a new project just run:
+    ```shell
+    just new-project name_of_the_project
+    ```

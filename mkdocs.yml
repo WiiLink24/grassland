@@ -8,7 +8,10 @@ repo_name: WiiLink Grassland
 repo_url: https://github.com/kutu-dev/grassland
 
 nav:
-  - WiiLink: 'index.md'
+  - WiiLink:
+    - Getting started: index.md
+    - Monorepo: monorepo.md
+    - The CI/CD pipeline: ci-cd-pipeline.md
   - Sprout: '!include ./projects/sprout/mkdocs.yml'
   - Documentation: '!include ./projects/documentation/mkdocs.yml'
 
@@ -16,23 +19,11 @@ plugins:
   - monorepo
 
 markdown_extensions:
-  - pymdownx.arithmatex
-  - pymdownx.betterem:
-      smart_enable: all
-  - pymdownx.caret
-  - pymdownx.critic
+  - admonition
   - pymdownx.details
+  - pymdownx.superfences
   - pymdownx.emoji:
       emoji_generator: !!python/name:pymdownx.emoji.to_svg
-  - pymdownx.inlinehilite
-  - pymdownx.magiclink
-  - pymdownx.mark
-  - pymdownx.smartsymbols
-  - pymdownx.superfences
-  - pymdownx.tasklist:
-      custom_checkbox: true
-  - pymdownx.tilde
-  - pymdownx.snippets
 
 theme:
   name: material
