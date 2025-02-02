@@ -14,3 +14,5 @@ runs:
         registry: ghcr.io
         username: kutu-dev
         password: ${{ inputs.github_access_token }}
+
+    - uses: docker/setup-buildx-action@v3

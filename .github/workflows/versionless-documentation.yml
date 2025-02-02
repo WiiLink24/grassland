@@ -1,4 +1,4 @@
-name: "Publish versionless Docker images"
+name: "Publish versionless documentation Docker image"
 
 concurrency:
   group: ${{ github.workflow }} 
@@ -27,7 +27,7 @@ jobs:
       with:
         github_access_token: "${{ secrets.GITHUB_TOKEN }}"
 
-    - uses: ./.github/actions/login-docker
+    - uses: ./.github/actions/setup-docker
       with:
         github_access_token: "${{ secrets.GITHUB_TOKEN }}"
 

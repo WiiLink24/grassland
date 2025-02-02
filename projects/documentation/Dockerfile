@@ -1,4 +1,5 @@
 # MUST BE RUN AT THE ROOT OF THE REPOSITORY
+# CHECK: https://stackoverflow.com/a/34300129
 
 FROM python:3.13.1-alpine3.21 AS build
 
