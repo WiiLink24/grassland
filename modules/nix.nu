@@ -1,12 +1,28 @@
+use ./log.nu *
+
+# Remove your Nix CLI configuration and set one that will only enable Nix Flakes experiment
+export def setup-nix [] {
+    log info "Setting up Nix"
+
+    let nix_config_dir_path = $"($env.HOME)/.config/nix"
+    let nix_config_file_path = $"($nix_config_dir_path)/nix.conf"
+
+    mkdir $nix_config_dir_path
+
+    rm -f $nix_config_file_path
+    "experimental-features = nix-command flakes" | save $nix_config_file_path
+}
+
 # Check, lint and format all available Nix files
-[script]
-check-nix:
+export def check-nix [] {
     # Because some programming language package managers just clone the source repository (_cough_ NPM _cough_)
     # sometimes it can be inside of them Nix files which should not be modified to avoid possible breakage of packages
     # What this does is:
     # 1. Get all the files that ends with `.nix`
     # 2. Exclude all of them that in their path
     #    have one of the strings listed in the BANNED_PATH_SUBSTRINGS constant
+
+    log info "Checking Nix"
 
     const BANNED_PATH_SUBSTRINGS = ["node_modules"]
 
@@ -22,19 +38,7 @@ check-nix:
     }
 
     ls ...(glob **/*.nix) | where {|path| $path.name | string_not_contains_in_list $BANNED_PATH_SUBSTRINGS} | each { |path|
-        print $"Info: Formating '($path.name)'"
+        log info $"Formating '($path.name)'"
         nix fmt $path.name
     }
-
-# Remove your Nix CLI configuration and set one that will only enable Nix Flakes experiment
-[script]
-enable-nix-flakes:
-    let nix_config_dir_path = $"($env.HOME)/.config/nix"
-    let nix_config_file_path = $"($nix_config_dir_path)/nix.conf"
-
-    mkdir $nix_config_dir_path
-
-    rm -f $nix_config_file_path
-    touch $nix_config_file_path
-
-    "experimental-features = nix-command flakes" out> $nix_config_file_path
+}

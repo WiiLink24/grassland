@@ -1,5 +1,5 @@
 # The CI/CD pipeline
-The CI/CD complexity enough to be mentioned.
+The complexity of the CI/CD enough to be mentioned.
 
 !!! note
     The default `latest` Docker image tag **MUST NOT** be used to avoid confusion.
@@ -29,4 +29,4 @@ Where `action` can be:
 - `artifact`: To try to generate and upload the relevant artifact files of the project (binary executables for example).
 
 !!! warning
-    Be aware that the GitHub repository is setup that if the last uploaded commit to the `main` branch doesn't pass the global checks (`just check` on the root of the repository) creating new tags will be refused to ensure integrity.
+    Be aware that the GitHub repository is set up that if the last uploaded commit to the `main` branch doesn't pass the global checks (`./run check` on the root of the repository) creating new tags will be refused to ensure integrity.

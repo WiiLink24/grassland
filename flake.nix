@@ -27,7 +27,6 @@
         name = "WiiLink Grassland";
         nativeBuildInputs = with pkgs; [
           addlicense
-          just
           pnpm
           nodejs_18
           nushell

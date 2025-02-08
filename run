@@ -1,0 +1,87 @@
+#!/usr/bin/env nu
+
+use modules/log.nu *
+use modules/ensure-tools.nu *
+use modules/nix.nu *
+use modules/web.nu *
+
+# Handle the meta files of the monorepo
+def main [] {
+    ^($env.CURRENT_FILE) --help
+}
+
+def "main tools ensure" [] {
+    tools_ensure
+}
+
+# Setup the development environment of the monorepo
+def "main setup" [] {
+    setup-nix
+    setup-web
+
+    main setup projects
+}
+
+# Setup all the projects in the monorepo
+def "main setup projects" [] {
+    generic-command-in-projects "setup"
+}
+
+# Check, lint and format everything
+def "main check" [] {
+    log info "Setting the execution permission of all 'run' files"
+    chmod u+x **/run
+
+    check-nix
+    check-web
+
+    main check projects
+}
+
+# Check all the projects in the monorepo
+def "main check projects" [] {
+    generic-command-in-projects "check"
+}
+
+# Try to run a command in all the 'run' files of all the projects, if the command is not available
+# or the 'run' doesn't exists then the project is skipped.
+def generic-command-in-projects [
+    command: string # The name of the command to run
+] {
+    ls ./projects/ | where type == dir | each { |project|
+        let project_name = $project.name | path basename
+        let run_file_path = $project.name | path join run
+
+        if ($run_file_path | path type) != "file" {
+            log warning $"The project '($project_name)' does not have a 'run' file, skipping..."
+            return
+        }
+
+        # I don't know why I can't just use the negation operator `!`,
+        # it fails with a 'string to bool' conversion error
+        if (cat $run_file_path | str contains $'def "main ($command)"') != true {
+            log warning $"The project '($project_name)' does not have a '($command)' routine, skipping..."
+            return
+        }
+
+        ^($run_file_path) $command
+    }
+}
+
+# Take all the gitignore files in the './gitignores/' directory and merge them in the global one
+def "main gitignore build" [] {
+    log info "Building new global '.gitignore' file"
+
+    const mainGitignoreFilePath = "./.gitignore"
+    rm -f $mainGitignoreFilePath
+
+    "#### WARNING: MACHINE GENERATED FILE, DO NOT EDIT!!!\n" | save --append $mainGitignoreFilePath
+    "#### To generate this file run `just generate-gitignore` at the root of the monorepo\n" | save --append $mainGitignoreFilePath
+
+    ls ...(glob ./gitignores/**/*.gitignore) | each { |gitignoreFragmentPath|
+        let header = $"\n### ($gitignoreFragmentPath.name | path basename)\n"
+
+        $header | save --append $mainGitignoreFilePath
+        open $gitignoreFragmentPath.name | save --append $mainGitignoreFilePath
+    }
+}

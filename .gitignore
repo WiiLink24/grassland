@@ -73,7 +73,7 @@ instance/
 .scrapy
 
 # Sphinx documentation
-docs/_build/
+projects/documentation/docs/_build/
 
 # PyBuilder
 .pybuilder/
@@ -288,7 +288,8 @@ $RECYCLE.BIN/
 .LSOverride
 
 # Icon must end with two \r
-Icon
+Icon
+
 
 # Thumbnails
 ._*
@@ -344,7 +345,6 @@ storybook-static/
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 ### svelte.gitignore
-.svelte-kit/
 package
 ### node.gitignore
 # Logs
