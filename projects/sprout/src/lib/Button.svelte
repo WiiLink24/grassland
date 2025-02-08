@@ -54,11 +54,13 @@
     .primary:not(.disabled):hover {
         background-color: var(--color-accent-background-active);
         border-color: var(--color-accent-background-active);
+        color: var(--color-accent-text-active);
     }
 
     .secondary {
         background-color: var(--color-background);
         border: 2px var(--color-accent-background) solid;
+        color: var(--color-text);
     }
     
     .secondary.disabled {
