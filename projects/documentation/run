@@ -18,3 +18,12 @@ def "main setup" [] {
 
     .venv/bin/pip3 install -r requirements.txt
 }
+
+# Create a new docker image for the documentation
+def "main docker build" [
+    tag: string # The tag to be added to the image
+] {
+    cd $script_directory_path
+
+    docker build -t $"ghcr.io/kutu-dev/documentation:($tag)" .
+}
