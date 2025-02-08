@@ -10,6 +10,30 @@
 
 <App>
     <ThemeProvider brandColor="generic">
+        <Button disabled>I'm disabled</Button>
+        <Button type="secondary"disabled>I'm secondary & disabled</Button>
+        <Button type="danger"disabled>I'm secondary & disabled</Button>
+    </ThemeProvider>
+    <ThemeProvider brandColor="account">
+        <Button disabled>I'm disabled</Button>
+        <Button type="secondary"disabled>I'm secondary & disabled</Button>
+        <Button type="danger"disabled>I'm secondary & disabled</Button>
+    </ThemeProvider>
+    <ThemeProvider brandColor="internal">
+        <Button disabled>I'm disabled</Button>
+        <Button type="secondary"disabled>I'm secondary & disabled</Button>
+        <Button type="danger"disabled>I'm secondary & disabled</Button>
+    </ThemeProvider>
+    <ThemeProvider brandColor="wc24">
+        <Button disabled>I'm disabled</Button>
+        <Button type="secondary"disabled>I'm secondary & disabled</Button>
+        <Button type="danger"disabled>I'm secondary & disabled</Button>
+    </ThemeProvider>
+    <ThemeProvider brandColor="generic">
+        <Button disabled>I'm disabled</Button>
+        <Button type="secondary"disabled>I'm secondary & disabled</Button>
+        <Button type="danger"disabled>I'm secondary & disabled</Button>
+
         <h1>Heading 1</h1>
         <h2>Heading 2</h2>
         <h3>Heading 3</h3>

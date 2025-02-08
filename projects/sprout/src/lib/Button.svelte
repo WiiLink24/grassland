@@ -49,6 +49,7 @@
     .primary.disabled {
         background-color: var(--color-accent-background-disabled);
         border-color: var(--color-accent-background-disabled);
+        color: var(--color-accent-text-disabled);
     }
 
     .primary:not(.disabled):hover {
