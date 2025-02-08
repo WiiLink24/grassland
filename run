@@ -46,7 +46,7 @@ def "main check projects" [] {
 # Try to run a command in all the 'run' files of all the projects, if the command is not available
 # or the 'run' doesn't exists then the project is skipped.
 def generic-command-in-projects [
-command: string
+    command: string # The name of the command to run
 ] {
     ls ./projects/ | where type == dir | each { |project|
         let project_name = $project.name | path basename

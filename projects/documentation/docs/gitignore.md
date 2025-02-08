@@ -4,5 +4,5 @@ Instead of having a huge unmaintainable global `.gitignore` file it's split into
 
 To build the final `.gitignore` file just run:
 ```shell
-just generate-gitignore 
+./run gitignore build
 ```

@@ -7,14 +7,7 @@
 So the one that is sensible and use the arcane arts of _"use common sense"_ and _"it depends"_.
 
 ### How everything is glued together?
-We're using the [`just`](https://just.systems/man/en/) command runner in conjunction with the [Nushell language](https://www.nushell.sh/book/thinking_in_nu.html).
-
-Each project can have multiple recipes and **MUST** use the `[script]` attribute to avoid using `bash` in accident. Each project **MUST** have at least the `setup` and `check` recipes (they can be empty).
-
-Optionally project can have a `build-docker-image tag` recipe if they enable building a Docker image. The `tag` argument is the tag that should be attach to the image, the final name of the image is expected to be in the form of: `ghcr.io/wiilink24/<name_of_the_project_directory>:<tag>`.
-
-#### Why `just`?
-Because it allows to share the workflow between the developers and the CI/CD system without relaying in tedious to use individual scripts.
+We're using the [Nushell language](https://www.nushell.sh/book/thinking_in_nu.html) as our main scripting language.
 
 #### Why Nushell?
 Because...
@@ -49,4 +42,4 @@ As you can expect this is not a golden hammer, some notable issues are:
 - Some people can be intimidated by having a unusual ecosystem, fortunately this can be alleviated with documentation.
 
 ### Anyway better start coding
-The advantages overcomes this problems or can work around them, be able to implement complex workflows atomically and know in every moment how ever piece of software interact with each other instead of relaying in fragile orchestration systems is (in the opinion of [the author of this entry in the docs](https://dobon.dev)) enough reason to this code organization pattern.
+The advantages overcome these problems or can work around them, be able to implement complex workflows atomically and know in every moment how ever piece of software interact with each other instead of relaying in fragile orchestration systems is (in the opinion of [the author of this entry in the docs](https://dobon.dev)) enough reason to this code organization pattern.

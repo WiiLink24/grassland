@@ -1,0 +1,24 @@
+name: "Check and lint all the project"
+
+# If a new commit is pushed just ignore the current one in the process queue and skip to the newest one
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: true
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup-nix
+        with:
+          github_access_token: "${{ secrets.GITHUB_TOKEN }}"
+
+      - run: ./run setup
+      - run: ./run check
