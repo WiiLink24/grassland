@@ -53,6 +53,7 @@ declare module '$env/static/private' {
 	export const outputs: string;
 	export const npm_package_files_1: string;
 	export const KDE_APPLICATIONS_AS_SCOPE: string;
+	export const OLDPWD: string;
 	export const NIX_BUILD_CORES: string;
 	export const TERM_PROGRAM_VERSION: string;
 	export const DESKTOP_SESSION: string;
@@ -95,6 +96,7 @@ declare module '$env/static/private' {
 	export const STRIP: string;
 	export const npm_package_sideEffects_0: string;
 	export const LOGNAME: string;
+	export const npm_package_dependencies_normalize_css: string;
 	export const npm_package_type: string;
 	export const strictDeps: string;
 	export const NIX_GCROOT: string;
@@ -221,6 +223,7 @@ declare module '$env/static/private' {
 	export const INIT_CWD: string;
 	export const NM: string;
 	export const OBJDUMP: string;
+	export const NODE_ENV: string;
 }
 
 /**
@@ -279,6 +282,7 @@ declare module '$env/dynamic/private' {
 		outputs: string;
 		npm_package_files_1: string;
 		KDE_APPLICATIONS_AS_SCOPE: string;
+		OLDPWD: string;
 		NIX_BUILD_CORES: string;
 		TERM_PROGRAM_VERSION: string;
 		DESKTOP_SESSION: string;
@@ -321,6 +325,7 @@ declare module '$env/dynamic/private' {
 		STRIP: string;
 		npm_package_sideEffects_0: string;
 		LOGNAME: string;
+		npm_package_dependencies_normalize_css: string;
 		npm_package_type: string;
 		strictDeps: string;
 		NIX_GCROOT: string;
@@ -447,6 +452,7 @@ declare module '$env/dynamic/private' {
 		INIT_CWD: string;
 		NM: string;
 		OBJDUMP: string;
+		NODE_ENV: string;
 		[key: `PUBLIC_${string}`]: undefined;
 		[key: `${string}`]: string | undefined;
 	}
