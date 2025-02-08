@@ -31,4 +31,4 @@ jobs:
           github_access_token: "${{ secrets.GITHUB_TOKEN }}"
 
       - run: ./projects/documentation/run docker build versionless
-      - run: docker push ghcr.io/WiiLink24/documentation:versionless
+      - run: docker push ghcr.io/wiilink24/documentation:versionless

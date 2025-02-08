@@ -25,5 +25,5 @@ def "main docker build" [
 ] {
     cd $script_directory_path
 
-    docker build -t $"ghcr.io/WiiLink24/documentation:($tag)" .
+    docker build -t $"ghcr.io/wiilink24/documentation:($tag)" .
 }
