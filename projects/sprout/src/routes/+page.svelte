@@ -1,109 +1,123 @@
 <script>
     import App from "$lib/App.svelte";
+    import Box from "$lib/Box.svelte";
     import Button from "$lib/Button.svelte";
-    import DarkModeButton from "$lib/DarkModeButton.svelte";
-    import LightModeButton from "$lib/LightModeButton.svelte";
+    import CallToAction from "$lib/CallToAction.svelte";
+    import Surface from "$lib/Surface.svelte";
     import ThemeProvider from "$lib/ThemeProvider.svelte";
-
-    let foo = $state(4);
-    let bar = $state(false);
+    import { colorScheme } from "$lib/colorScheme.svelte.js";
 </script>
 
-<div style="padding: 20px; background-color: #f2f2f2;">
-    <h1>Welcome to your library project</h1>
-    <p>Create your package using @sveltejs/package and preview/showcase your work with SvelteKit</p>
-    <p>Visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to read the documentation</p>
+<App>
+    <ThemeProvider brandColor="generic">
+        <h1>Heading 1</h1>
+        <h2>Heading 2</h2>
+        <h3>Heading 3</h3>
+        <h4>Heading 4</h4>
+        <Button type="danger">Delete all data!</Button>
+        <CallToAction>Call to action!</CallToAction>
+        Non call to action
+        <Surface>
+            <Box vertical>
+                <Box>
+                    <CallToAction>GOO</CallToAction>
+                    TEXT AND
+                    <Button onclick={() => {
+                        colorScheme.darkModeEnabled = true;
+                    }}>Dark Mode</Button>
+                    <Button onclick={() => {
+                        colorScheme.darkModeEnabled = false;
+                    }}>Light Mode</Button>
+                    <Button>Buttons!</Button>
+                    <Button type="secondary">Buttons!</Button>
+                </Box>
+                <Box vertical>
+                    TEXT AND
+                    <Button>Buttons!</Button>
+                    <Button>Buttons!</Button>
+                    <Button>Buttons!</Button>
+                    <Button type="secondary">Buttons!</Button>
+                </Box>
+            </Box>
+            
+        </Surface>
+    </ThemeProvider>
 
-    <p>{foo}</p>
+    <ThemeProvider brandColor="internal">
+        <Surface>
+            <Box vertical>
+                <Box>
+                    TEXT AND
+                    <Button onclick={() => {
+                        colorScheme.darkModeEnabled = true;
+                    }}>Dark Mode</Button>
+                    <Button onclick={() => {
+                        colorScheme.darkModeEnabled = false;
+                    }}>Light Mode</Button>
+                    <Button>Buttons!</Button>
+                    <Button type="secondary">Buttons!</Button>
+                </Box>
+                <Box vertical>
+                    TEXT AND
+                    <Button>Buttons!</Button>
+                    <Button>Buttons!</Button>
+                    <Button>Buttons!</Button>
+                    <Button type="secondary">Buttons!</Button>
+                </Box>
+            </Box>
+            
+        </Surface>
+    </ThemeProvider>
 
-    <App>
-        <ThemeProvider colorScheme="generic">
-            <DarkModeButton/>
-            <LightModeButton/>
-            <Button onclick={() => {
-            }}>Installation Guide</Button>
-            <Button type="secondary" onclick={() => {
-                foo--;
-            }}>Installation Guide</Button>
-            <Button type="danger" onclick={() => {console.log("DANGER!")}}>Installation Guide</Button>
+    <ThemeProvider brandColor="account">
+        <Surface>
+            <Box vertical>
+                <Box>
+                    TEXT AND
+                    <Button onclick={() => {
+                        colorScheme.darkModeEnabled = true;
+                    }}>Dark Mode</Button>
+                    <Button onclick={() => {
+                        colorScheme.darkModeEnabled = false;
+                    }}>Light Mode</Button>
+                    <Button>Buttons!</Button>
+                    <Button type="secondary">Buttons!</Button>
+                </Box>
+                <Box vertical>
+                    TEXT AND
+                    <Button>Buttons!</Button>
+                    <Button>Buttons!</Button>
+                    <Button>Buttons!</Button>
+                    <Button type="secondary">Buttons!</Button>
+                </Box>
+            </Box>
+            
+        </Surface>
+    </ThemeProvider>
 
-            <Button disabled onclick={() => {console.log("THIS IS NOT GOING TO BE PRINTED")}}>Installation Guide</Button>
-            <Button type="secondary" disabled onclick={() => {console.log("THIS IS NOT GOING TO BE PRINTED")}}>Installation Guide</Button>
-            <Button type="danger" disabled onclick={() => {console.log("THIS IS NOT GOING TO BE PRINTED")}}>Installation Guide</Button>
-        </ThemeProvider>
-        <br>
-        <ThemeProvider colorScheme="wc24">
-            <Button onclick={() => {console.log("PRIMARY"); foo++}}>Installation Guide</Button>
-            <Button type="secondary" onclick={() => {console.log("SECONDARY"); foo--}}>Installation Guide</Button>
-            <Button type="danger" onclick={() => {console.log("DANGER!")}}>Installation Guide</Button>
-
-            <Button disabled onclick={() => {console.log("THIS IS NOT GOING TO BE PRINTED")}}>Installation Guide</Button>
-            <Button type="secondary" disabled onclick={() => {console.log("THIS IS NOT GOING TO BE PRINTED")}}>Installation Guide</Button>
-            <Button type="danger" disabled onclick={() => {console.log("THIS IS NOT GOING TO BE PRINTED")}}>Installation Guide</Button>
-        </ThemeProvider>
-        <br>
-        <ThemeProvider colorScheme="account">
-            <Button onclick={() => {console.log("PRIMARY"); foo++}}>Installation Guide</Button>
-            <Button type="secondary" onclick={() => {console.log("SECONDARY"); foo--}}>Installation Guide</Button>
-            <Button type="danger" onclick={() => {console.log("DANGER!")}}>Installation Guide</Button>
-
-            <Button disabled onclick={() => {console.log("THIS IS NOT GOING TO BE PRINTED")}}>Installation Guide</Button>
-            <Button type="secondary" disabled onclick={() => {console.log("THIS IS NOT GOING TO BE PRINTED")}}>Installation Guide</Button>
-            <Button type="danger" disabled onclick={() => {console.log("THIS IS NOT GOING TO BE PRINTED")}}>Installation Guide</Button>
-        </ThemeProvider>
-        <br>
-        <ThemeProvider colorScheme="internal">
-            <Button onclick={() => {console.log("PRIMARY"); foo++}}>Installation Guide</Button>
-            <Button type="secondary" onclick={() => {console.log("SECONDARY"); foo--}}>Installation Guide</Button>
-            <Button type="danger" onclick={() => {console.log("DANGER!")}}>Installation Guide</Button>
-
-            <Button disabled onclick={() => {console.log("THIS IS NOT GOING TO BE PRINTED")}}>Installation Guide</Button>
-            <Button type="secondary" disabled onclick={() => {console.log("THIS IS NOT GOING TO BE PRINTED")}}>Installation Guide</Button>
-            <Button type="danger" disabled onclick={() => {console.log("THIS IS NOT GOING TO BE PRINTED")}}>Installation Guide</Button>
-        </ThemeProvider>
-        
-        <br>
-
-        <div style="background-color: var(--color-black); padding: 30px">
-        <ThemeProvider colorScheme="generic" >
-            <Button onclick={() => {console.log("PRIMARY"); foo++}}>Installation Guide</Button>
-            <Button type="secondary" onclick={() => {console.log("SECONDARY"); foo--}}>Installation Guide</Button>
-            <Button type="danger" onclick={() => {console.log("DANGER!")}}>Installation Guide</Button>
-
-            <Button disabled onclick={() => {console.log("THIS IS NOT GOING TO BE PRINTED")}}>Installation Guide</Button>
-            <Button type="secondary" disabled onclick={() => {console.log("THIS IS NOT GOING TO BE PRINTED")}}>Installation Guide</Button>
-            <Button type="danger" disabled onclick={() => {console.log("THIS IS NOT GOING TO BE PRINTED")}}>Installation Guide</Button>
-        </ThemeProvider>
-        <br>
-        <ThemeProvider colorScheme="wc24" >
-            <Button onclick={() => {console.log("PRIMARY"); foo++}}>Installation Guide</Button>
-            <Button type="secondary" onclick={() => {console.log("SECONDARY"); foo--}}>Installation Guide</Button>
-            <Button type="danger" onclick={() => {console.log("DANGER!")}}>Installation Guide</Button>
-
-            <Button disabled onclick={() => {console.log("THIS IS NOT GOING TO BE PRINTED")}}>Installation Guide</Button>
-            <Button type="secondary" disabled onclick={() => {console.log("THIS IS NOT GOING TO BE PRINTED")}}>Installation Guide</Button>
-            <Button type="danger" disabled onclick={() => {console.log("THIS IS NOT GOING TO BE PRINTED")}}>Installation Guide</Button>
-        </ThemeProvider>
-        <br>
-        <ThemeProvider colorScheme="account" >
-            <Button onclick={() => {console.log("PRIMARY"); foo++}}>Installation Guide</Button>
-            <Button type="secondary" onclick={() => {console.log("SECONDARY"); foo--}}>Installation Guide</Button>
-            <Button type="danger" onclick={() => {console.log("DANGER!")}}>Installation Guide</Button>
-
-            <Button disabled onclick={() => {console.log("THIS IS NOT GOING TO BE PRINTED")}}>Installation Guide</Button>
-            <Button type="secondary" disabled onclick={() => {console.log("THIS IS NOT GOING TO BE PRINTED")}}>Installation Guide</Button>
-            <Button type="danger" disabled onclick={() => {console.log("THIS IS NOT GOING TO BE PRINTED")}}>Installation Guide</Button>
-        </ThemeProvider>
-        <br>
-        <ThemeProvider colorScheme="internal">
-            <Button onclick={() => {console.log("PRIMARY"); foo++}}>Installation Guide</Button>
-            <Button type="secondary" onclick={() => {console.log("SECONDARY"); foo--}}>Installation Guide</Button>
-            <Button type="danger" onclick={() => {console.log("DANGER!")}}>Installation Guide</Button>
-
-            <Button disabled onclick={() => {console.log("THIS IS NOT GOING TO BE PRINTED")}}>Installation Guide</Button>
-            <Button type="secondary" disabled onclick={() => {console.log("THIS IS NOT GOING TO BE PRINTED")}}>Installation Guide</Button>
-            <Button type="danger" disabled onclick={() => {console.log("THIS IS NOT GOING TO BE PRINTED")}}>Installation Guide</Button>
-        </ThemeProvider>
-        </div>
-    </App>
-</div>
+    <ThemeProvider brandColor="wc24">
+        <Surface>
+            <Box vertical>
+                <Box>
+                    TEXT AND
+                    <Button onclick={() => {
+                        colorScheme.darkModeEnabled = true;
+                    }}>Dark Mode</Button>
+                    <Button onclick={() => {
+                        colorScheme.darkModeEnabled = false;
+                    }}>Light Mode</Button>
+                    <Button>Buttons!</Button>
+                    <Button type="secondary">Buttons!</Button>
+                </Box>
+                <Box vertical>
+                    TEXT AND
+                    <Button>Buttons!</Button>
+                    <Button>Buttons!</Button>
+                    <Button>Buttons!</Button>
+                    <Button type="secondary">Buttons!</Button>
+                </Box>
+            </Box>
+            
+        </Surface>
+    </ThemeProvider>
+</App>

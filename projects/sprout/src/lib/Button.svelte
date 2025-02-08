@@ -58,8 +58,8 @@
     }
 
     .secondary {
-        background-color: var(--color-background);
-        border: 2px var(--color-accent-background) solid;
+        background-color: #00000000;
+        border: 3px var(--color-accent-background) solid;
         color: var(--color-text);
     }
     
@@ -71,6 +71,7 @@
     .danger {
         background-color: var(--color-red);
         border-color: var(--color-red);
+        color: var(--color-white);
     }
 
     .danger.disabled {
