@@ -1,8 +1,14 @@
 <script>
+// @ts-nocheck
+
     import App from "$lib/App.svelte";
     import Box from "$lib/Box.svelte";
     import Button from "$lib/Button.svelte";
     import CallToAction from "$lib/CallToAction.svelte";
+    import H1 from "$lib/H1.svelte";
+    import H2 from "$lib/H2.svelte";
+    import H3 from "$lib/H3.svelte";
+    import H4 from "$lib/H4.svelte";
     import Surface from "$lib/Surface.svelte";
     import ThemeProvider from "$lib/ThemeProvider.svelte";
     import { colorScheme } from "$lib/colorScheme.svelte.js";
@@ -34,10 +40,10 @@
         <Button type="secondary"disabled>I'm secondary & disabled</Button>
         <Button type="danger"disabled>I'm secondary & disabled</Button>
 
-        <h1>Heading 1</h1>
-        <h2>Heading 2</h2>
-        <h3>Heading 3</h3>
-        <h4>Heading 4</h4>
+        <H1>Heading 1</H1>
+        <H2>Heading 2</H2>
+        <H3>Heading 3</H3>
+        <H4>Heading 4</H4>
         <Button type="danger">Delete all data!</Button>
         <CallToAction>Call to action!</CallToAction>
         Non call to action
@@ -45,6 +51,9 @@
             <Box vertical>
                 <Box>
                     <CallToAction>GOO</CallToAction>
+                    <Surface noPadding>
+                        LEVEL 2! <Button>FALALO</Button>
+                    </Surface>
                     TEXT AND
                     <Button onclick={() => {
                         colorScheme.darkModeEnabled = true;
