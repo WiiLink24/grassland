@@ -1,6 +1,5 @@
 <template>
-  <Ui>
-    <ThemeToggle></ThemeToggle>
-    <Footer></Footer>
-  </Ui>
+  <div>
+    <HelloWorld></HelloWorld>
+  </div>
 </template>
