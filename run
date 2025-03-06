@@ -63,7 +63,11 @@ def generic-command-in-projects [
 
         log info $"Running ($command) in project '($project_name)'"
 
-        ^($run_file_path) $command | ignore
+        cd $project.name
+
+        ./run $command
+
+        cd ..
     }
 }
 
@@ -75,7 +79,7 @@ def "main gitignore build" [] {
     rm -f $mainGitignoreFilePath
 
     "#### WARNING: MACHINE GENERATED FILE, DO NOT EDIT!!!\n" | save --append $mainGitignoreFilePath
-    "#### To generate this file run `just generate-gitignore` at the root of the monorepo\n" | save --append $mainGitignoreFilePath
+    "#### To generate this file run `./run gitignore build` at the root of the monorepo\n" | save --append $mainGitignoreFilePath
 
     ls ...(glob ./meta/gitignores/**/*.gitignore) | each { |gitignoreFragmentPath|
         let header = $"\n### ($gitignoreFragmentPath.name | path basename)\n"
