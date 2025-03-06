@@ -1,7 +1,7 @@
 {
 	"name": "grassland",
 	"devDependencies": {
-		"syncpack": "^13.0.0"
+		"syncpack": "^13.0.2"
 	},
 	"packageManager": "pnpm@10.5.2"
 }
