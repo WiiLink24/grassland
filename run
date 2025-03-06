@@ -63,7 +63,7 @@ def generic-command-in-projects [
 
         log info $"Running ($command) in project '($project_name)'"
 
-        ^($run_file_path) $command
+        ^($run_file_path) $command | ignore
     }
 }
 
