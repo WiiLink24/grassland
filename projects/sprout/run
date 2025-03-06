@@ -7,6 +7,7 @@ def main [] {
 
 # Setup the environment files used by Nuxt (.nuxt directory)
 def "main setup" [] {
+    print "DEBUG RUNNING" 
     pnpm install
     pnpm nuxi prepare ./playground
 }
