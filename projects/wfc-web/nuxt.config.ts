@@ -4,6 +4,5 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
 
   extends: [
-    "sprout"
   ],
 })

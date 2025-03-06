@@ -28,9 +28,10 @@
         nativeBuildInputs = with pkgs; [
           addlicense
           pnpm
-          nodejs_18
           nushell
           python313
+          yamlfmt
+          hujsonfmt
         ];
       };
     });

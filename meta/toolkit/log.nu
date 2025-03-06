@@ -11,21 +11,21 @@ def generic_log [
 }
 
 # Print an info message
-export def "log info" [
+export def info [
     message: string # The message to be printed
 ] {
     generic_log blue INFO $message
 }
 
 # Print a warning message
-export def "log warning" [
+export def warning [
     message: string # The message to be printed
 ] {
     generic_log yellow WARNING $message
 }
 
 # Print an error message
-export def "log error" [
+export def error [
     message: string # The message to be printed
 ] {
     generic_log red ERROR $message

@@ -1,10 +1,11 @@
 {
-  "name": "sprout",
-  "type": "module",
-  "main": "./nuxt.config.ts",
-  "devDependencies": {
-    "nuxt": "^3.15.4",
-    "typescript": "^5.8.2",
-    "vue": "latest"
-  }
+	"name":    "sprout",
+	"version": "0.0.1",
+	"devDependencies": {
+		"nuxt":       "^3.15.4",
+		"typescript": "^5.8.2",
+		"vue":        "latest"
+	},
+	"main": "./nuxt.config.ts",
+	"type": "module"
 }

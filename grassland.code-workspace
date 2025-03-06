@@ -1,0 +1,30 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "./projects/documentation"
+		},
+		{
+			"path": "./projects/sprout"
+		},
+		{
+			"path": "./projects/wfc-web"
+		},
+	],
+	"settings": {
+		"files.exclude": {
+        	"**/node_modules/": true,
+		},
+		
+		"cSpell.words": [
+			"nuxi",
+			"Nuxt"
+		],
+		
+		"files.associations": {
+        	"run": "nushell"
+    	},
+	}
+}

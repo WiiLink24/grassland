@@ -1,5 +1,6 @@
 {
-  "extends": [
-    "../../tsconfig.json",
-  ]
+	"extends": [
+		"../../tsconfig.json",
+		"./.nuxt/tsconfig.json"
+	]
 }

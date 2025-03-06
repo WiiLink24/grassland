@@ -1,9 +1,6 @@
 #!/usr/bin/env nu
 
-use modules/log.nu *
-use modules/ensure-tools.nu *
-use modules/nix.nu *
-use modules/web.nu *
+use meta/toolkit *
 
 # Handle the meta files of the monorepo
 def main [] {
@@ -11,20 +8,15 @@ def main [] {
 }
 
 def "main tools ensure" [] {
-    tools_ensure
+    tools ensure
 }
 
 # Setup the development environment of the monorepo
 def "main setup" [] {
-    setup-nix
-    setup-web
+    nix setup
+    web setup
 
     main setup projects
-}
-
-# Setup all the projects in the monorepo
-def "main setup projects" [] {
-    generic-command-in-projects "setup"
 }
 
 # Check, lint and format everything
@@ -32,15 +24,22 @@ def "main check" [] {
     log info "Setting the execution permission of all 'run' files"
     chmod u+x **/run
 
-    check-nix
-    check-web
+    nix check
+    web check
+    yaml check
+    json check
 
     main check projects
 }
 
+# Setup all the projects in the monorepo
+def "main setup projects" [] {
+    generic-command-in-projects "setup" | ignore
+}
+
 # Check all the projects in the monorepo
 def "main check projects" [] {
-    generic-command-in-projects "check"
+    generic-command-in-projects "check" | ignore
 }
 
 # Try to run a command in all the 'run' files of all the projects, if the command is not available
@@ -57,12 +56,12 @@ def generic-command-in-projects [
             return
         }
 
-        # I don't know why I can't just use the negation operator `!`,
-        # it fails with a 'string to bool' conversion error
-        if (cat $run_file_path | str contains $'def "main ($command)"') != true {
+        if not (cat $run_file_path | str contains $'def "main ($command)"') {
             log warning $"The project '($project_name)' does not have a '($command)' routine, skipping..."
             return
         }
+
+        log info $"Running ($command) in project '($project_name)'"
 
         ^($run_file_path) $command
     }
@@ -78,10 +77,10 @@ def "main gitignore build" [] {
     "#### WARNING: MACHINE GENERATED FILE, DO NOT EDIT!!!\n" | save --append $mainGitignoreFilePath
     "#### To generate this file run `just generate-gitignore` at the root of the monorepo\n" | save --append $mainGitignoreFilePath
 
-    ls ...(glob ./gitignores/**/*.gitignore) | each { |gitignoreFragmentPath|
+    ls ...(glob ./meta/gitignores/**/*.gitignore) | each { |gitignoreFragmentPath|
         let header = $"\n### ($gitignoreFragmentPath.name | path basename)\n"
 
         $header | save --append $mainGitignoreFilePath
         open $gitignoreFragmentPath.name | save --append $mainGitignoreFilePath
-    }
+    } | ignore
 }

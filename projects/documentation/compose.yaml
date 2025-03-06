@@ -1,0 +1,7 @@
+services:
+  documentation:
+    image: ghcr.io/wiilink24/documentation:versionless
+    restart: unless-stopped
+
+    ports:
+      - 8080:80

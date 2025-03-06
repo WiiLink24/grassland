@@ -1,0 +1,37 @@
+#!/usr/bin/env nu
+
+use ../../meta/toolkit *
+
+# Website for the WiiLink WFC service
+def main [] {
+    ^($env.CURRENT_FILE) --help
+}
+
+# Setup the environment files used by Nuxt (.nuxt directory)
+def "main setup" [] {
+    pnpm install
+    pnpm nuxi prepare
+}
+
+# Run the app on development mode
+def "main dev" [] {
+    pnpm nuxi dev
+}
+
+# Build the app for deployment
+def "main build" [] {
+    pnpm nuxi build
+}
+
+# Preview how the final production website will look like
+def "main preview" [] {
+    #!/usr/bin/env bash
+
+    if not (("./.output" | path type) == "dir") {
+        log error "The '.output' directory is missing, did you run 'just build'?"
+        log info "Remember to rebuild your site before previewing it again!"
+        exit 1
+    }
+
+    pnpm nuxi preview
+}

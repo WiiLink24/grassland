@@ -1,0 +1,17 @@
+#!/usr/bin/env nu
+
+# Shared components for Nuxt websites
+def main [] {
+    ^($env.CURRENT_FILE) --help
+}
+
+# Setup the environment files used by Nuxt (.nuxt directory)
+def "main setup" [] {
+    pnpm install
+    pnpm nuxi prepare ./playground
+}
+
+# Run the app on development mode
+def "main dev" [] {
+    pnpm nuxi dev ./playground
+}

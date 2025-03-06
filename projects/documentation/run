@@ -2,8 +2,13 @@
 
 let script_directory_path = $env.CURRENT_FILE | path dirname
 
-# Handle the meta files of the monorepo
+# The common developer documentation of WiiLink
 def main [] {
+    ^($env.CURRENT_FILE) --help
+}
+
+# Handle the meta files of the monorepo
+def "main dev" [] {
     cd $script_directory_path
 
     .venv/bin/mkdocs serve
