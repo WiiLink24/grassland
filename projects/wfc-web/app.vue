@@ -1,3 +1,6 @@
 <template>
-  <Ui></Ui>
+  <Ui>
+    <ThemeToggle></ThemeToggle>
+    <Footer></Footer>  
+  </Ui>
 </template>

@@ -18,9 +18,10 @@ For work in the project you need the follow software, please install it with the
 
 - [`addlicense`](https://github.com/google/addlicense)
 - [`pnpm`](https://pnpm.io/)
-- Any version of [`Node.js`](https://nodejs.org/en) that provides a somewhat modern version of [`npm`](https://www.npmjs.com/).
-- [`Nushell`](https://www.nushell.sh/).
-- [`Python`](https://www.python.org/) 3.13 available with the `python3` command. _(see below)_
+- [`Nushell`](https://www.nushell.sh/)
+- [`yamlfmt`](https://github.com/google/yamlfmt)
+- [`hujsonfmt`](https://github.com/tailscale/hujson/tree/master/cmd/hujsonfmt)
+- [`Python`](https://www.python.org/) 3.13 available with the `python3` command _(see below)_
 
 #### Python versioning hell
 So Python has a [_little_ issue with its binary name](https://stackoverflow.com/a/70528020). There is no reliable way to spin up Python from a shell script, at the time of writing Python 3 **MAY** be available in the terminal as:
