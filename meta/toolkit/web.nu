@@ -6,12 +6,20 @@ export def setup [] {
     pnpm install
 }
 
-# Check, lint and format all JS/TS/Node.js/Vue/Nuxt/etc files
+# Check if web files are linted
 export def check [] {
+    pnpx eslint
+    pnpx prettier . --check
+}
+
+# Check, lint and format all JS/TS/Node.js/Vue/Nuxt/etc files
+export def fix [] {
     log info "Checking Web related tools"
 
-    pnpm exec syncpack -- fix-mismatches
-    pnpm exec syncpack -- format
+    # Syncpack cannot be checked, only fixed
+    # ~TRACK: https://github.com/JamieMason/syncpack/issues/216
+    pnpx syncpack -- fix-mismatches
+    pnpx syncpack -- format
 
     pnpx prettier . --write
     pnpx eslint --fix

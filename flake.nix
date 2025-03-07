@@ -30,7 +30,6 @@
           pnpm
           nushell
           python313
-          hujsonfmt
         ];
       };
     });

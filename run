@@ -19,16 +19,36 @@ def "main setup" [] {
     main setup projects
 }
 
-# Check, lint and format everything
+# Check if all the monorepo doesn't has any file in bad shape
 def "main check" [] {
-    log info "Setting the execution permission of all 'run' files"
-    chmod u+x **/run
+    log info "Checking run file permissions..."
+    ls **/run | each {|file|
+        if ((stat -c "%a" $file.name | into int) / 100 | math floor) != 7 {
+            log error $"The run file '($file.name)' doesn't have permissions 'rwx' for the user"
+            log info "Run './run fix' to fix the issue!"
+            exit 1
+        }
+    }
 
     nix check
     web check
-    json check
 
     main check projects
+
+    log info "Everything is right!"
+}
+
+# Check, lint and format everything
+def "main fix" [] {
+    log info "Setting the execution permission of all 'run' files"
+    chmod u+x **/run
+
+    nix fix
+    web fix
+
+    main fix projects
+
+    log info "Fixed every file!"
 }
 
 # Setup all the projects in the monorepo
@@ -36,9 +56,15 @@ def "main setup projects" [] {
     generic-command-in-projects "setup" | ignore
 }
 
+
 # Check all the projects in the monorepo
 def "main check projects" [] {
     generic-command-in-projects "check" | ignore
+}
+
+# Fix all the projects in the monorepo
+def "main fix projects" [] {
+    generic-command-in-projects "fix" | ignore
 }
 
 # Try to run a command in all the 'run' files of all the projects, if the command is not available

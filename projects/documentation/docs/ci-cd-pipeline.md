@@ -3,7 +3,7 @@
 The complexity of the CI/CD enough to be mentioned.
 
 !!! note
-The default `latest` Docker image tag **MUST NOT** be used to avoid confusion.
+    The default `latest` Docker image tag **MUST NOT** be used to avoid confusion.
 
 ## Versioned vs "versionless" projects
 

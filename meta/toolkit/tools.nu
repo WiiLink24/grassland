@@ -2,7 +2,7 @@ use log.nu
 
 # Check if they're installed all the commands and tools needed for working in the monorepo
 export def ensure [] {
-    const COMMANDS_TO_CHECK = ["pnpm" "addlicense" "hujsonfmt"]
+    const COMMANDS_TO_CHECK = ["pnpm" "addlicense"]
      $COMMANDS_TO_CHECK | each {|command|
         log info $"Checking '($command)'"
 

@@ -19,14 +19,25 @@
 			"**/.venv/**": true,
 		},
 
-		"cSpell.words": ["nuxi", "Nuxt"],
+		"cSpell.words": [
+			"addlicense",
+			"hujsonfmt",
+			"Nushell",
+			"nuxi",
+			"Nuxt",
+			"pnpx",
+			"Syncpack",
+			"versionless",
+			"wiilink",
+			"yamlfmt"
+		],
 
 		"files.associations": {
 			"run": "nushell",
 		},
 
 		"[vue]": {
-        	"editor.defaultFormatter": "Vue.volar"
-    	},
+			"editor.defaultFormatter": "Vue.volar",
+		},
 	},
 }

@@ -14,8 +14,17 @@ export def setup [] {
     "experimental-features = nix-command flakes" | save $nix_config_file_path
 }
 
-# Check, lint and format all available Nix files
 export def check [] {
+    log info "Checking Nix files"
+
+    glob safe-file-ext "nix" | each { |path| 
+        log info $"Checking '($path)'"
+        nix fmt $path -- --check
+    }
+}
+
+# Check, lint and format all available Nix files
+export def fix [] {
     log info "Checking Nix"
 
     glob safe-file-ext "nix" | each { |path| 
