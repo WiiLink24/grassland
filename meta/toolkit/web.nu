@@ -12,4 +12,7 @@ export def check [] {
 
     pnpm exec syncpack -- fix-mismatches
     pnpm exec syncpack -- format
+
+    pnpx prettier . --write
+    pnpx eslint --fix
 }

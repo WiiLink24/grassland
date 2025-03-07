@@ -26,7 +26,6 @@ def "main check" [] {
 
     nix check
     web check
-    yaml check
     json check
 
     main check projects

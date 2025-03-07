@@ -1,3 +1,1 @@
-<template>
-  EO
-</template>
+<template>EO</template>
