@@ -33,9 +33,4 @@ def ensure-python [] {
         log error "Your Python3 installation is below 3.13.Y, please update Python"
         exit 1
     }
-
-    if ($python_version.patch | into int) < 1 {
-        log error "Your Python3 installation is below 3.13.1, please update Python"
-        exit 1
-    }
 }
