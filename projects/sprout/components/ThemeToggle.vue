@@ -1,16 +1,16 @@
 <script setup lang="ts">
-import { toggleDarkMode } from '../util';
+import { toggleDarkMode } from "../util";
 
 function onClick(_event: Event) {
-	toggleDarkMode()
+	toggleDarkMode();
 }
 </script>
 
 <style scoped>
-	.dark-mode .button {
-		background-color: black;
-		color: white;
-	}
+.dark-mode .button {
+	background-color: black;
+	color: white;
+}
 </style>
 
 <template>

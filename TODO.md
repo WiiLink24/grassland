@@ -2,4 +2,4 @@
 
 - Licensing
 - Sprout
-    - ¡i18n!
+  - ¡i18n!

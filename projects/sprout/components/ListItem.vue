@@ -1,17 +1,17 @@
 <style scoped>
 .li {
-    list-style: none;
+	list-style: none;
 
-    font-family: var(--font-inter);
+	font-family: var(--font-inter);
 	font-size: 16px;
 	font-weight: normal;
 
-    color: var(--c-text);
+	color: var(--c-text);
 }
 </style>
 
 <template>
-<li class="li">
-    <slot></slot>
-</li>
+	<li class="li">
+		<slot></slot>
+	</li>
 </template>

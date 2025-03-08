@@ -18,7 +18,7 @@ export def fix [] {
 
     # Syncpack cannot be checked, only fixed
     # ~TRACK: https://github.com/JamieMason/syncpack/issues/216
-    pnpx syncpack -- fix-mismatches
+    pnpx syncpack -- fix-mismatches --types '!local'
     pnpx syncpack -- format
 
     pnpx prettier . --write

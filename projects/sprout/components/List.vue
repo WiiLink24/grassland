@@ -1,11 +1,11 @@
 <style scoped>
 .ul {
-    padding: 0;
+	padding: 0;
 }
 </style>
 
 <template>
-<ul class="ul">
-    <slot></slot>
-</ul>
+	<ul class="ul">
+		<slot></slot>
+	</ul>
 </template>

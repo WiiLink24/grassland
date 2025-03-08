@@ -30,7 +30,7 @@
 			"Syncpack",
 			"versionless",
 			"wiilink",
-			"yamlfmt"
+			"yamlfmt",
 		],
 
 		"files.associations": {
@@ -47,7 +47,7 @@
 			// General
 			"streetsidesoftware.code-spell-checker",
 			"me-dutour-mathieu.vscode-github-actions",
-			
+
 			// YAML
 			"redhat.vscode-yaml",
 
@@ -64,13 +64,13 @@
 			"dbaeumer.vscode-eslint",
 			"esbenp.prettier-vscode",
 			"Vue.volar",
-			"unifiedjs.vscode-mdx"
+			"unifiedjs.vscode-mdx",
 		],
 
 		"unwantedRecommendations": [
 			// Everybody should always use `pnpm install <whatever>`
 			// to ensure that packages and synced in the workspace
 			"christian-kohler.npm-intellisense",
-		]
-	}
+		],
+	},
 }

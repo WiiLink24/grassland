@@ -15,7 +15,7 @@ git clone git@github.com:wiilink24/grassland.git
 ### Setting up the environment
 
 !!! note
-    There is available a Nix Flake with a `devShell` tailored for the repository, if you know how [Nix](https://nixos.org/) works feel free to use it and skip this section.
+There is available a Nix Flake with a `devShell` tailored for the repository, if you know how [Nix](https://nixos.org/) works feel free to use it and skip this section.
 
 For work in the project you need the follow software, please install it with the system package manager available on your OS:
 
@@ -73,6 +73,6 @@ If the previous check command failed or you want your code to not fail at the CI
 Check the `README.md` stored inside each project at `./projects/` to learn more about them. Remember each one has its one `run` file, there you will find the most important commands to run in that project.
 
 !!! warning
-    Remember to avoid using the language native command runners, like the scripts sections of a `package.json` file, too ensure consistency in all the projects in the repository and make things easier for external and new devs.
+Remember to avoid using the language native command runners, like the scripts sections of a `package.json` file, too ensure consistency in all the projects in the repository and make things easier for external and new devs.
 
 Maybe you are interested in [checking how this monorepo one works and why this software architecture pattern have been decided to be used](monorepo.md).
