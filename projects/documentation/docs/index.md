@@ -23,7 +23,6 @@ For work in the project you need the follow software, please install it with the
 - [`pnpm`](https://pnpm.io/)
 - [`Nushell`](https://www.nushell.sh/)
 - [`yamlfmt`](https://github.com/google/yamlfmt)
-- [`hujsonfmt`](https://github.com/tailscale/hujson/tree/master/cmd/hujsonfmt)
 - [`Python`](https://www.python.org/) 3.13 available with the `python3` command _(see below)_
 
 #### Python versioning hell

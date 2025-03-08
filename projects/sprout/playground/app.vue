@@ -5,6 +5,10 @@
 <template>
     <Ui>
         <ThemeToggle />
-        <Footer />
+        <Footer>
+            <FooterSitePagesItem href="https://example.com">
+                TESTING
+            </FooterSitePagesItem>
+        </Footer>
     </Ui>
 </template>

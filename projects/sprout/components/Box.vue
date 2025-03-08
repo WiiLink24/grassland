@@ -1,10 +1,7 @@
 <script setup lang="ts">
-const props = defineProps({
-    vertical: Boolean,
-    alignItems: String,
-})
-
-const alignItemsStart = props.alignItems == "start";
+const { vertical = false } = defineProps<{
+    vertical: boolean,
+}>();
 </script>
 
 <style scoped>
@@ -16,14 +13,10 @@ const alignItemsStart = props.alignItems == "start";
     .box.vertical {
         flex-direction: column;
     }
-
-    .box.alignItemsStart {
-        align-items: start;
-    }
 </style>
 
 <template>
-<div class="box" :class="{vertical: props.vertical, alignItemsStart: alignItemsStart}">
+<div class="box" :class="{vertical}">
     <slot></slot>
 </div>
 </template>

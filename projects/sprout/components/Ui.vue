@@ -50,21 +50,19 @@ setupDarkMode();
 
 @font-face {
 	font-family: "Inter";
-	src: url(/public/fonts/inter-18pt-regular.woff2) format(woff2);
-	font-weight: normal;
+	src: url(/sprout/fonts/inter-18pt-regular.woff2) format(woff2);
 }
 
 @font-face {
 	font-family: "Poppins";
-	src: url(/public/fonts/poppins-bold.woff2) format(woff2);
-	font-weight: bold;
+	src: url(/sprout/fonts/poppins-bold.woff2) format(woff2);
 }
 
 .ui {
 	--font-sans-serif-fallbacks: "Arial", "Helvetica", sans-serif;
 
-	--font-inter: "Inter", var(--font-sans-serif-fallbacks);
-	--font-poppins: "Poppins", var(--font-sans-serif-fallbacks);
+	--font-inter: "Inter";
+	--font-poppins: "Poppins";
 
 	--c-white: #FFFFFF;
 	--c-black: #090909;
@@ -79,37 +77,6 @@ setupDarkMode();
 }
 
 .dark-mode .ui {
-}
-
-:deep(h2) {
-	font-family: var(--font-poppins);
-    font-size: 36px;
-	font-weight: bold;
-}
-
-:deep(h3) {
-	font-family: var(--font-poppins);
-    font-size: 24px;
-	font-weight: bold;
-}
-
-:deep(li),
-:deep(a),
-:deep(p) {
-	font-family: var(--font-inter);
-	font-size: 16px;
-	font-weight: normal;
-}
-
-:deep(h1),
-:deep(h2),
-:deep(h3),
-:deep(h4),
-:deep(h5),
-:deep(li),
-:deep(a),
-:deep(p) {
-	color: var(--c-text);
 }
 </style>
 

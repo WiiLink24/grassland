@@ -1,16 +1,28 @@
 <script setup lang="ts">
-interface Props {
-    top?: string,
-    bottom?: string,
+const { spaced = undefined } = defineProps<{
+    spaced: "small" | "big" | undefined,
+}>();
+
+let top;
+let bottom;
+
+switch (spaced) {
+    case undefined: {
+        top = "2px";
+        bottom = "15px"
+        break;
+    }
+
+    case "small": {
+        top = bottom = "15px";
+        break;
+    }
+
+    case "big": {
+        top = bottom = "50px";
+        break;
+    }
 }
-
-const props = withDefaults(defineProps<Props>(), {
-    top: "2",
-    bottom: "15",
-})
-
-const top = `${props.top}px`;
-const bottom = `${props.bottom}px`;
 
 </script>
 

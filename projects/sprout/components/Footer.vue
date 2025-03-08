@@ -27,55 +27,52 @@
 
 <template>
 	<footer class="footer">
-		<Box vertical padded>
-			<Box align-items="start">
+		<Box vertical>
+			<Box>
 			<div class="footer__logo">
 				<Logo />
 			</div>
 			<div>
-				<h2>Site Pages</h2>
+				<H2>Site Pages</H2>
 				<Hr />
 				<List>
-					<ListItem><a>Up</a></ListItem>
-					<ListItem><a>To</a></ListItem>
-					<ListItem><a>Six</a></ListItem>
-					<ListItem><a>Different</a></ListItem>
-					<ListItem><a>Links</a></ListItem>
-					<ListItem><a>On</a></ListItem>
+					<slot></slot>
 				</List>
 			</div>
 
 			<div>
-				<h2>The Team</h2>
+				<H2>The Team</H2>
 				<Hr />
 				<List>
 					<!-- TODO: This page doesn't exist yet -->
-					<ListItem><a href="https://wiilink.ca/team">Members</a></ListItem>
-					<ListItem><a href="https://github.com/WiiLink24">Organization</a></ListItem>
-					<ListItem><a href="https://github.com/orgs/WiiLink24/repositories">Repositories</a></ListItem>
+					<ListItem><Anchor href="https://wiilink.ca/team">Members</Anchor></ListItem>
+					<ListItem><Anchor href="https://github.com/WiiLink24">Organization</Anchor></ListItem>
+					<ListItem><Anchor href="https://github.com/orgs/WiiLink24/repositories">Repositories</Anchor></ListItem>
 				</List>
 			</div>
 
 			<div>
-				<h2>Social Media</h2>
+				<H2>Social Media</H2>
 				<Hr />
 				<List>
-					<ListItem><a href="https://discord.gg/wiilink">Discord</a></ListItem>
-					<ListItem><a href="https://www.instagram.com/_wiilink">Instagram</a></ListItem>
+					<ListItem><Anchor href="https://discord.gg/wiilink">Discord</Anchor></ListItem>
+					<ListItem><Anchor href="https://www.instagram.com/_wiilink">Instagram</Anchor></ListItem>
+					
 					<!-- TODO: Multilingual anchor -->
-					<ListItem><a href="https://example.com">Twitter</a></ListItem>
-					<ListItem><a href="https://example.com">Bluesky</a></ListItem>
-					<ListItem><a href="https://www.youtube.com/@wiilink">YouTube</a></ListItem>
+					<ListItem><Anchor href="https://example.com">Twitter</Anchor></ListItem>
+					<ListItem><Anchor href="https://example.com">Bluesky</Anchor></ListItem>
+
+					<ListItem><Anchor href="https://www.youtube.com/@wiilink">YouTube</Anchor></ListItem>
 				</List>
 			</div>
 		</Box>
-		<Hr top="50" bottom="50"/>
+		<Hr spaced="big" />
 		<div class="footer__legal-warning">
-			<h3>
+			<H3>
 				WiiLink is an unofficial, non-profit homebrew project.
 				It is not affiliated with Nintendo and all trademarks are the property of their respective owners.
 				No copyright infringement intended.
-			</h3>
+			</H3>
 		</div>
 		<Box>
 			<Anchor href="https://wiilink.ca/tos/" dim>Terms of Service</Anchor>
