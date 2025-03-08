@@ -3,9 +3,13 @@
 	"version": "0.0.1",
 	"devDependencies": {
 		"nuxt": "^3.15.4",
+		"sass-embedded": "^1.85.1",
 		"typescript": "^5.8.2",
 		"vue": "^3.5.13"
 	},
 	"main": "./nuxt.config.ts",
-	"type": "module"
+	"type": "module",
+	"dependencies": {
+		"normalize-scss": "^8.0.0"
+	}
 }

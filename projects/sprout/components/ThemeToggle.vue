@@ -1,35 +1,18 @@
-<script lang="ts">
-export default {
-	data() {
-		return {
-			darkMode: localStorage.getItem("dark-mode") == "true",
-		};
-	},
+<script setup lang="ts">
+import { toggleDarkMode } from '../util';
 
-	mounted() {
-		if (this.darkMode) {
-			document.documentElement.className = "dark-mode";
-		} else {
-			document.documentElement.className = "";
-		}
-	},
-
-	methods: {
-		toggleTheme(_event: Event) {
-			this.darkMode = !this.darkMode;
-
-			if (this.darkMode) {
-				document.documentElement.className = "";
-				localStorage.setItem("dark-mode", "false");
-			} else {
-				document.documentElement.className = "dark-mode";
-				localStorage.setItem("dark-mode", "true");
-			}
-		},
-	},
-};
+function onClick(_event: Event) {
+	toggleDarkMode()
+}
 </script>
 
+<style scoped>
+	.dark-mode .button {
+		background-color: black;
+		color: white;
+	}
+</style>
+
 <template>
-	<button @click="toggleTheme">CHANGE THEME</button>
+	<button class="button" @click="onClick">CHANGE THEME</button>
 </template>
