@@ -78,17 +78,38 @@ setupDarkMode();
 	src: url(/sprout/fonts/poppins-bold.woff2) format(woff2);
 }
 
+@font-face {
+	font-family: "Gilroy";
+	src: url(/sprout/fonts/Gilroy.otf) format("opentype");
+}
+
+@font-face {
+	font-family: "Rubik";
+	src: url(/sprout/fonts/Rubik.ttf) format("truetype");
+}
+
+@font-face {
+	font-family: "FontAwesome";
+	src: url(/sprout/fonts/fontawesome.ttf) format("truetype");
+}
+
 .ui {
 	--font-sans-serif-fallbacks: "Arial", "Helvetica", sans-serif;
 
 	--font-inter: "Inter";
 	--font-poppins: "Poppins";
+	--font-gilroy: "Gilroy";
+	--font-system: system-ui, -apple-system, BlinkMacSystemFont,
+		"Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
+		"Fira Sans", "Droid Sans", "Helvetica Neue",
+		var(--font-sans-serif-fallbacks);
 
 	--c-white: #ffffff;
 	--c-black: #090909;
 	--c-white-dim: #ffffff41;
 
 	--c-accent: var(--c-black);
+	--c-gradient: linear-gradient(41deg, #008aff 0%, #ff003b 100%);
 	--c-text: var(--c-white);
 	--c-text-dim: var(--c-white-dim);
 

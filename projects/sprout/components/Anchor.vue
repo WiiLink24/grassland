@@ -1,7 +1,12 @@
 <script setup lang="ts">
-const { href, dim = false } = defineProps<{
+const {
+	href,
+	dim = false,
+	nochevron = false,
+} = defineProps<{
 	href: string;
-	dim: boolean;
+	dim?: boolean; // Make optional with ?
+	nochevron?: boolean; // Make optional with ?
 }>();
 </script>
 
@@ -9,10 +14,35 @@ const { href, dim = false } = defineProps<{
 .anchor,
 .anchor:visited {
 	font-family: var(--font-inter);
-	font-size: 16px;
+	font-size: 18px;
 	font-weight: normal;
 
 	color: var(--c-text);
+
+	position: relative;
+	transition: 0.5s;
+}
+
+.anchor:hover {
+	text-decoration: underline;
+}
+
+.anchor::before {
+	content: "\f105";
+	font-family: "FontAwesome";
+	font-weight: 900;
+	position: absolute;
+	left: -20px;
+	opacity: 0;
+	transition: all 0.5s ease;
+}
+.anchor.animscroll:hover {
+	padding-left: 25px;
+	transition: 0.5s;
+}
+.anchor.animscroll:hover::before {
+	left: 0px;
+	opacity: 1;
 }
 
 .anchor.dim {
@@ -27,7 +57,11 @@ const { href, dim = false } = defineProps<{
 </style>
 
 <template>
-	<a :href class="anchor" :class="{ dim: dim }">
+	<a
+		:href="href"
+		class="anchor flex flex-row items-center gap-2"
+		:class="{ dim: dim, animscroll: !nochevron }"
+	>
 		<slot></slot>
 	</a>
 </template>

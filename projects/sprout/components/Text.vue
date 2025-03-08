@@ -1,6 +1,6 @@
 <style scoped>
 .text {
-	font-family: var(--font-inter);
+	font-family: system-ui;
 	font-size: 16px;
 	font-weight: normal;
 

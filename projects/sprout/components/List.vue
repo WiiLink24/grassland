@@ -1,11 +1,5 @@
-<style scoped>
-.ul {
-	padding: 0;
-}
-</style>
-
 <template>
-	<ul class="ul">
+	<ul class="flex flex-col gap-2">
 		<slot></slot>
 	</ul>
 </template>

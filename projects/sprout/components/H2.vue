@@ -1,7 +1,7 @@
 <style scoped>
 .h2 {
-	font-family: var(--font-poppins);
-	font-size: 36px;
+	font-family: var(--font-gilroy);
+	font-size: 1.5rem;
 	font-weight: bold;
 
 	color: var(--c-text);

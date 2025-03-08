@@ -2,7 +2,7 @@
 .li {
 	list-style: none;
 
-	font-family: var(--font-inter);
+	font-family: var(--font-system);
 	font-size: 16px;
 	font-weight: normal;
 
