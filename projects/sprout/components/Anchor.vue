@@ -3,10 +3,12 @@ const {
 	href,
 	dim = false,
 	nochevron = false,
+	nounderline = false,
 } = defineProps<{
 	href: string;
-	dim?: boolean; // Make optional with ?
-	nochevron?: boolean; // Make optional with ?
+	dim?: boolean;
+	nochevron?: boolean;
+	nounderline?: boolean;
 }>();
 </script>
 
@@ -54,13 +56,17 @@ const {
 .anchor.dim:focus {
 	color: var(--c-text);
 }
+
+.anchor.nounderline:hover {
+	text-decoration: none !important;
+}
 </style>
 
 <template>
 	<a
 		:href="href"
 		class="anchor flex flex-row items-center gap-2"
-		:class="{ dim: dim, animscroll: !nochevron }"
+		:class="{ dim: dim, animscroll: !nochevron, nounderline: nounderline }"
 	>
 		<slot></slot>
 	</a>
