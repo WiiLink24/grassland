@@ -148,10 +148,13 @@
 
     .button--text {
         background-color: transparent;
+        border-width: 0px !important;
+        padding: 0 !important;
         color: var(--c-button-default);
     }
 
     .button--text:hover {
+        background-color: transparent;
         color: var(--c-text);
     }
 

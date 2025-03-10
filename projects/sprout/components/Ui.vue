@@ -99,6 +99,7 @@ setupDarkMode();
 	--font-inter: "Inter";
 	--font-poppins: "Poppins";
 	--font-gilroy: "Gilroy";
+	--font-rubik: "Rubik";
 	--font-system: system-ui, -apple-system, BlinkMacSystemFont,
 		"Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
 		"Fira Sans", "Droid Sans", "Helvetica Neue",

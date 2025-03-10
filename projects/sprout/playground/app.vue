@@ -140,37 +140,73 @@ const submitHandler = () => {
 				</ButtonGroup>
 			</div>
 
-			<div class="flex flex-row items-center gap-3">
-				<ButtonGroup join direction="row" class="mt-10">
-					<Button color="primary" size="default" type="default" rounded="small">
+			<div class="!my-6 max-w-[600px]">
+				<H1 class="flex flex-row items-center gap-2"
+					>Welcome to <span class="font-[var(--font-rubik)]">WiiLink</span>
+					<span
+						class="py-1 px-2 rounded-[var(--border-radius-standard)] bg-[var(--c-button-primary)] font-[var(--font-gilroy)] text-2xl font-bold"
+						>WFC</span
+					></H1
+				>
+				<Text class="!mt-1 !mb-3">
+					WiiLink WFC is a custom server for the Nintendo Wii console that
+					allows you to play online games with friends, as well as download
+					custom content for your games. It is a non-profit project that is not
+					affiliated with Nintendo.
+				</Text>
+
+				<ButtonGroup>
+					<Button
+						size="small"
+						type="text"
+						class="!text-white/40 -translate-y-[2px] flex flex-row items-center gap-2"
+						><img
+							src="https://avatars.githubusercontent.com/u/26661008?v=4"
+							class="w-6 rounded-full"
+						/>
+						Developed by <u>Palapeli</u></Button
+					>
+					<Hr class="!mt-5 !my-6 flex-grow block relative" />
+				</ButtonGroup>
+
+				<div class="flex flex-row items-center gap-3">
+					<ButtonGroup join direction="row" class="mt-10 flex-grow">
+						<Button
+							color="success"
+							size="default"
+							type="default"
+							rounded="small"
+							class="flex-grow"
+						>
+							<Anchor
+								href="https://wiilink.ca/download/windows"
+								nochevron
+								nounderline
+								class="flex justify-center"
+								><LucideDownload :size="20" />Download WFC Patcher</Anchor
+							>
+						</Button>
+						<Button
+							color="success"
+							size="default"
+							type="default"
+							rounded="small"
+							class="flex justify-center"
+						>
+							<LucideChevronDown />
+						</Button>
+					</ButtonGroup>
+
+					<Button color="success" size="default" type="outline" rounded="large">
 						<Anchor
-							href="https://wiilink.ca/download/windows"
+							href="https://wiilink.ca/guide/install"
 							nochevron
 							nounderline
 							class="flex justify-center"
-							><Icon name="uil:microsoft" />Download for Windows</Anchor
+							><LucideArrowUpRight /> Installation Guide</Anchor
 						>
 					</Button>
-					<Button
-						color="primary"
-						size="default"
-						type="default"
-						rounded="small"
-						class="flex justify-center"
-					>
-						<LucideChevronDown />
-					</Button>
-				</ButtonGroup>
-
-				<Button color="primary" size="default" type="outline" rounded="large">
-					<Anchor
-						href="https://wiilink.ca/guide/install"
-						nochevron
-						nounderline
-						class="flex justify-center"
-						><LucideArrowUpRight /> Installation Guide</Anchor
-					>
-				</Button>
+				</div>
 			</div>
 
 			<ButtonGroup>
