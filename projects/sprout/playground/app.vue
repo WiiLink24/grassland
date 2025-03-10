@@ -207,6 +207,14 @@ const submitHandler = () => {
 						>
 					</Button>
 				</div>
+				<br>
+				<Progress color="var(--c-button-primary)" progress="30" height="15" rounded="full" >
+					Progressbar content not visible
+				</Progress>
+				<br>
+				<Progress color="var(--c-button-success)" progress="70" height="30" rounded="normal" >
+					<Text>Progressbar content visible</Text>
+				</Progress>
 			</div>
 
 			<ButtonGroup>
