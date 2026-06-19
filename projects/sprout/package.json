@@ -9,7 +9,7 @@
 		"@nuxt/icon": "1.10.3",
 		"@nuxtjs/i18n": "9.3.0",
 		"@nuxtjs/tailwindcss": "^6.13.1",
-		"nuxt": "^3.16.0",
+		"nuxt": "^3.21.7",
 		"nuxt-lucide-icons": "1.0.5",
 		"sass-embedded": "^1.85.1",
 		"typescript": "^5.8.2",
